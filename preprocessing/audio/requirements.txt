@@ -1,0 +1,22 @@
+Cython
+numpy==1.23
+pytorch-lightning==1.9.4  # no need to install this on cam
+torchaudio  # should use v0.9 on cam
+transformers
+librosa
+nnAudio
+wandb
+mir_eval
+h5py
+sox
+tqdm
+pandas
+scipy==1.9.1
+numba
+mido
+wget
+jams
+openunmix
+madmom
+musdb
+accelerate
