@@ -1,6 +1,9 @@
 # CLaMP 3: Universal Music Information Retrieval Across Unaligned Modalities and Unseen Languages
 
-![CLaMP 3 Overview](overview.jpg)
+<p align="center">
+  <img src="overview.png" alt="CLaMP 3 Overview" width="50%">
+</p>
+
 
 ## Overview
 CLaMP 3 is a unified framework for cross-modal and cross-lingual music information retrieval (MIR). By using contrastive learning, it aligns sheet music, audio, performance signals, and multilingual text into a shared representation space, enabling retrieval across unaligned musical modalities. Key features include:
