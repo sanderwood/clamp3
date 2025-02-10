@@ -36,7 +36,7 @@ Importantly, these applications are **not restricted to any specific musical mod
 - [M4-RAG Pre-training Dataset](https://huggingface.co/datasets/sander-wood/m4-rag)
 - [WikiMT-X Evaluation Benchmark](https://huggingface.co/datasets/sander-wood/wikimt-x)
 
-> **Note** Ensure the model weights for CLaMP 3 are placed under the `code/` folder for proper loading. Also, verify that the configuration hyperparameters are correctly set.
+> **Note:** Ensure the model weights for CLaMP 3 are placed under the `code/` folder for proper loading. Also, verify that the configuration hyperparameters are correctly set.
 
 ## Repository Structure
 - [code/](https://github.com/sanderwood/clamp3/tree/main/code): Contains scripts for training CLaMP 3 and extracting features from music and text data. You can modify hyperparameters and file paths in the configuration files for custom training.
@@ -47,7 +47,7 @@ Importantly, these applications are **not restricted to any specific musical mod
 
 - [retrieval/](https://github.com/sanderwood/clamp3/tree/main/retrieval): Provides scripts for evaluating model performance, conducting semantic searches, and calculating similarity metrics based on extracted feature vectors.
 
-> **Note** For detailed instructions on how to use the scripts in each folder, please refer to the individual README files within those directories. This main README provides only a high-level overview of the repository.
+> **Note:** For detailed instructions on how to use the scripts in each folder, please refer to the individual README files within those directories. This main README provides only a high-level overview of the repository.
 
 ## Getting Started
 
