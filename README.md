@@ -11,7 +11,7 @@ CLaMP 3 is a unified framework for cross-modal and cross-lingual music informati
 - **Multimodal Support:**
    1. **Sheet Music:** Uses Interleaved ABC notation.
    2. **Performance Signals:** Processes MIDI Text Format (MTF) data.
-   3. **Audio Recordings:** Works with audio features extracted by MERT.
+   3. **Audio Recordings:** Works with audio features extracted by [MERT](https://arxiv.org/abs/2306.00107).
 
 - **Multilingual Capabilities:** Supports 100 languages ([XLM-R](https://arxiv.org/abs/1911.02116)) and generalizes effectively beyond its 27-language training data.
 
@@ -36,7 +36,7 @@ CLaMP 3 achieves state-of-the-art performance across multiple MIR tasks, advanci
   
 - [classification/](https://github.com/sanderwood/clamp3/tree/main/classification): Includes scripts for classification tasks using extracted features, such as training linear classification models and making predictions.
 
-- [preprocessing/](https://github.com/sanderwood/clamp3/tree/main/preprocessing): Scripts for converting your data into compatible formats (interleaved ABC notation, MTF, or MERT-extracted audio features). These are required for CLaMP 3 to work with the data.
+- [preprocessing/](https://github.com/sanderwood/clamp3/tree/main/preprocessing): Scripts for converting your data into compatible formats (interleaved ABC notation, MTF, or -extracted audio features). These are required for CLaMP 3 to work with the data.
 
 - [retrieval/](https://github.com/sanderwood/clamp3/tree/main/retrieval): Provides scripts for evaluating model performance, conducting semantic searches, and calculating similarity metrics based on extracted feature vectors.
 
