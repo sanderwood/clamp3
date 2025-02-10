@@ -25,9 +25,9 @@ This script uses the pre-trained CLaMP 3 model to extract representations from t
 
 For data preprocessing, use the scripts in the `preprocessing/` folder:
 - **Text files** (.txt) are processed directly.
-- **Sheet music** (.abc) is preprocessed into interleaved ABC notation using `preprocessing/abc/`.
-- **MIDI** files (.mtf) are preprocessed into MTF format using `preprocessing/midi/`.
-- **Audio features** (.npy), extracted using MERT, are processed using `preprocessing/audio/`.
+- **Sheet music** (.abc) is preprocessed into interleaved ABC notation using scripts in `preprocessing/abc/`.
+- **MIDI** files (.mtf) are preprocessed into MTF format using `preprocessing/midi/midi2mtf.py`.
+- **Audio features** (.npy), extracted using MERT, are processed using `preprocessing/audio/extract_mert.py`.
 
 Regardless of the input type, all extracted features are saved as `.npy` files. These features can either be transformed into global semantic vectors (via average pooling and a linear layer) or retain temporal information by extracting the hidden states from the last layer. 
 
