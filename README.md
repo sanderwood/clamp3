@@ -19,7 +19,14 @@ CLaMP 3 is a unified framework for cross-modal and cross-lingual music informati
   - Trained on **M4-RAG**, a large-scale dataset of 2.31M high-quality music-text pairs across 27 languages and 194 countries.
   - Introduces **WikiMT-X**, a benchmark containing 1,000 triplets of sheet music, audio, and text.
 
-CLaMP 3 achieves state-of-the-art performance across multiple MIR tasks, advancing research in multimodal and multilingual music systems.
+CLaMP 3 supports a wide range of applications in MIR and music research, including but not limited to:  
+- **Semantic retrieval:** Searching for music based on descriptive text or retrieving textual metadata based on audio or symbolic representations.  
+- **Zero-shot classification:** Categorizing music by genre, region, or other attributes without labeled training data.  
+- **Music quality assessment:** Measuring the **semantic distance** between reference ground truth and generated music using metrics analogous to **Fréchet Inception Distance (FID)**, providing an objective alternative to human evaluation.  
+- **Evaluation of generative models:** Assessing **text-to-music generation**, **music captioning**, and **symbolic-to-audio synthesis** models by quantifying their alignment across different modalities.  
+- **Computational musicology:** Enabling studies in **geographical musicology**, analyzing regional distributions and cross-cultural influences through large-scale multimodal datasets.  
+
+Importantly, these applications are **not restricted to any specific musical modality or language**. CLaMP 3's multimodal and multilingual design allows it to generalize across diverse datasets, making it a powerful tool for a wide range of music-related AI research.
 
 ### Links
 - CLaMP 3 Demo Page (Coming Soon...)
@@ -36,7 +43,7 @@ CLaMP 3 achieves state-of-the-art performance across multiple MIR tasks, advanci
   
 - [classification/](https://github.com/sanderwood/clamp3/tree/main/classification): Includes scripts for classification tasks using extracted features, such as training linear classification models and making predictions.
 
-- [preprocessing/](https://github.com/sanderwood/clamp3/tree/main/preprocessing): Scripts for converting your data into compatible formats (interleaved ABC notation, MTF, or -extracted audio features). These are required for CLaMP 3 to work with the data.
+- [preprocessing/](https://github.com/sanderwood/clamp3/tree/main/preprocessing): Scripts for converting your data into compatible formats (interleaved ABC notation, MTF, or MERT-extracted audio features). These are required for CLaMP 3 to work with the data.
 
 - [retrieval/](https://github.com/sanderwood/clamp3/tree/main/retrieval): Provides scripts for evaluating model performance, conducting semantic searches, and calculating similarity metrics based on extracted feature vectors.
 
