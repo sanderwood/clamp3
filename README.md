@@ -40,9 +40,9 @@ CLaMP 3 achieves state-of-the-art performance across multiple MIR tasks, advanci
 
 - [retrieval/](https://github.com/sanderwood/clamp3/tree/main/retrieval): Provides scripts for evaluating model performance, conducting semantic searches, and calculating similarity metrics based on extracted feature vectors.
 
-## Getting Started
-
 > **Note** For detailed instructions on how to use the scripts in each folder, please refer to the individual README files within those directories. This main README provides only a high-level overview of the repository.
+
+## Getting Started
 
 ### Environment Setup
 To set up the environment for CLaMP 3, run the following commands:
