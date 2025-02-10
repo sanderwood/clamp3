@@ -4,9 +4,9 @@
 This codebase provides scripts for training and using a linear classification model for music-related feature representations. It supports both training a classifier from extracted features and performing inference on new data.  
 
 ## Repository Structure  
-The `classification/` folder contains the following scripts:  
+The [classification/](https://github.com/sanderwood/clamp3/tree/main/classification) folder contains the following scripts:  
 
-### 1. `inference_cls.py`  
+### 1. [inference_cls.py](https://github.com/sanderwood/clamp3/blob/main/classification/inference_cls.py)
 This script performs classification on extracted feature vectors using a pre-trained linear probe model.  
 
 #### JSON Output Format  
@@ -29,7 +29,7 @@ python inference_cls.py <weights_path> <feature_folder> <output_file>
 - `feature_folder`: Directory containing input feature files (`.npy`).  
 - `output_file`: Path to save the classification results (JSON format).  
 
-### 2. `train_cls.py`  
+### 2. [train_cls.py](https://github.com/sanderwood/clamp3/blob/main/classification/train_cls.py)
 This script trains a linear classification model on extracted features.  
 
 #### Arguments  

@@ -4,9 +4,9 @@
 This codebase provides scripts for evaluating model retrieval performance, performing semantic searches, and calculating similarity metrics using CLaMP3-extracted **global** feature vectors from music or text data.
 
 ## Repository Structure  
-The `retrieval/` folder contains the following scripts:
+The [retrieval/](https://github.com/sanderwood/clamp3/tree/main/retrieval) folder contains the following scripts:
 
-### 1. `clamp3_score.py`  
+### 1. [clamp3_score.py](https://github.com/sanderwood/clamp3/blob/main/retrieval/clamp3_score.py)  
 This script calculates cosine similarity between average feature vectors from two sets of `.npy` files, serving as a measure of similarity between reference and test datasets.
 
 **Usage:**
@@ -21,7 +21,7 @@ python clamp3_score.py <reference_folder> <test_folder>
 - Calculates the cosine similarity between the averaged vectors.
 - Outputs the similarity score (rounded to four decimal places).
 
-### 2. `semantic_search.py`  
+### 2. [semantic_search.py](https://github.com/sanderwood/clamp3/blob/main/retrieval/semantic_search.py) 
 Performs semantic search by calculating the cosine similarity between a query feature and a set of stored features.
 
 **Usage:**
@@ -37,7 +37,7 @@ python semantic_search.py <query_file> <features_folder> [--top_k TOP_K]
 - Computes cosine similarity between the query and each feature.
 - Displays the top K most similar features and their similarity scores.
 
-### 3. `eval_mrr.py`  
+### 3. [eval_mrr.py](https://github.com/sanderwood/clamp3/blob/main/retrieval/eval_mrr.py) 
 Calculates evaluation metrics for semantic search by comparing query features to reference features.
 
 **Usage:**

@@ -1,19 +1,19 @@
 # ABC Notation Processing
 
-This folder provides scripts, partially adapted from [Wim Vree's ABC tools](https://wim.vree.org/), for converting MusicXML into standard ABC notation, then generating **interleaved ABC** format for **CLaMP 3**, and optionally converting ABC back to MusicXML.
+This folder provides scripts, partially adapted from [Wim Vree's ABC tools](https://wim.vree.org/svgParse/index.html), for converting MusicXML into standard ABC notation, then generating **interleaved ABC** format for **CLaMP 3**, and optionally converting ABC back to MusicXML.
 
 ## Scripts
 
-1. **`batch_xml2abc.py`**  
+1. [batch_xml2abc.py](https://github.com/sanderwood/clamp3/blob/main/preprocessing/abc/batch_xml2abc.py)  
    - **Step 1**: Converts MusicXML files (`.xml`, `.mxl`, `.musicxml`) to standard ABC notation.  
    - **Manual Path Edit**: You must open the script and set `input_dir` to your MusicXML directory.
    - **Output**: Standard ABC files.
 
-2. **`batch_interleaved_abc.py`**  
+2. [batch_interleaved_abc.py](https://github.com/sanderwood/clamp3/blob/main/preprocessing/abc/batch_interleaved_abc.py)  
    - **Step 2**: Converts the **ABC files output from Step 1** into interleaved ABC notation, which is **required by CLaMP 3**.  
    - **Manual Path Edit**: You must open the script and set `input_dir` to your **standard ABC** directory.
 
-3. **`batch_abc2xml.py`** *(Optional)*  
+3. [batch_abc2xml.py](https://github.com/sanderwood/clamp3/blob/main/preprocessing/abc/batch_abc2xml.py) *(Optional)*  
    - Converts ABC notation back to MusicXML, useful for verifying that no information was lost.  
    - **Not required for CLaMP 3**.
 

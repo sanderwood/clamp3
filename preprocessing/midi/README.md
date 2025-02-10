@@ -4,7 +4,7 @@ This folder provides scripts for converting MIDI files to **MIDI Text Format (MT
 
 ## Scripts
 
-1. **`batch_midi2mtf.py`**  
+1. [batch_midi2mtf.py](https://github.com/sanderwood/clamp3/blob/main/preprocessing/midi/batch_midi2mtf.py)  
    - **Step 1**: Converts MIDI files (`.mid`, `.midi`) to MTF format required by **CLaMP 3**.  
    - **`m3_compatible` Variable**:  
      - Default is `True`, which removes any natural language content within the MIDI messages for alignment with CLaMP 3’s training approach.  
@@ -12,7 +12,7 @@ This folder provides scripts for converting MIDI files to **MIDI Text Format (MT
    - **Manual Path Edit**: Open the script and set `input_dir` to your MIDI directory.  
    - **Output**: MTF files.
 
-2. **`batch_mtf2midi.py`** *(Optional)*  
+2. [batch_mtf2midi.py](https://github.com/sanderwood/clamp3/blob/main/preprocessing/midi/batch_mtf2midi.py)   *(Optional)*  
    - Converts MTF files back into MIDI format.  
    - Useful for verifying no information was lost in the conversion.  
    - **Not required for CLaMP 3**.
