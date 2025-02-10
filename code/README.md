@@ -18,7 +18,7 @@ For better performance with symbolic music data, the **C2 variant** of CLaMP 3 i
 - [CLaMP 3 C2 (Optimal for Symbolic)](https://huggingface.co/sander-wood/clamp3/blob/main/weights_clamp3_c2_h_size_768_t_model_FacebookAI_xlm-roberta-base_t_length_128_a_size_768_a_layers_12_a_length_128_s_size_768_s_layers_12_p_size_64_p_length_512.pth)
 - [M3 Model (Pre-trained Symbolic Music Encoder)](https://huggingface.co/sander-wood/clamp2/blob/main/weights_m3_p_size_64_p_length_512_t_layers_3_p_layers_12_h_size_768_lr_0.0001_batch_16_mask_0.45.pth)
 
-> **Note**: M3 refers to CLaMP 3's symbolic music encoder. If you don't need to retrain or fine-tune M3, you can skip modifying its related settings.
+> **Note**: M3 refers to CLaMP 3's symbolic music encoder. If you don't need to retrain or fine-tune M3, you can skip modifying its related settings or downloading its weights.
 
 ### 2. `extract_clamp3.py`
 This script uses the pre-trained CLaMP 3 model to extract representations from text (.txt), sheet music (.abc), MIDI (.mtf), or pre-extracted audio features (.npy). The input files are stored in a specified folder, and the extracted features are saved to a target output folder in `.npy` format.
