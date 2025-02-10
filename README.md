@@ -13,7 +13,7 @@ CLaMP 3 is a unified framework for cross-modal and cross-lingual music informati
    2. **Performance Signals:** Processes MIDI Text Format (MTF) data.
    3. **Audio Recordings:** Works with audio features extracted by [MERT](https://arxiv.org/abs/2306.00107).
 
-- **Multilingual Capabilities:** Supports 100 languages ([XLM-R](https://arxiv.org/abs/1911.02116)) and generalizes effectively beyond its 27-language training data.
+- **Multilingual Capabilities:** Trained on **27 languages** and generalizes to all **100 languages** supported by [XLM-R](https://arxiv.org/abs/1911.02116).
 
 - **Dataset and Benchmark:**
   - Trained on **M4-RAG**, a large-scale dataset of 2.31M high-quality music-text pairs across 27 languages and 194 countries.
