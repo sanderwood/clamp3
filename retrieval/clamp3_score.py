@@ -38,22 +38,22 @@ def cosine_similarity(vec1, vec2):
 if __name__ == '__main__':
     # Set up argument parsing for input folders
     parser = argparse.ArgumentParser(description="Calculate cosine similarity between average feature vectors.")
-    parser.add_argument('reference', type=str, help='Path to the reference folder containing .npy files.')
     parser.add_argument('test', type=str, help='Path to the test folder containing .npy files.')
+    parser.add_argument('reference', type=str, help='Path to the reference folder containing .npy files.')
     args = parser.parse_args()
 
-    reference = args.reference
     test = args.test
+    reference = args.reference
     # Load .npy files
-    ref_npy = load_npy_files(reference)
     test_npy = load_npy_files(test) 
+    ref_npy = load_npy_files(reference)
     
     # Compute the average of each list of numpy arrays
-    avg_ref = average_npy(ref_npy)
     avg_test = average_npy(test_npy)
+    avg_ref = average_npy(ref_npy)
 
     # Compute the cosine similarity between the two averaged numpy arrays
-    similarity = cosine_similarity(avg_ref, avg_test)
+    similarity = cosine_similarity(avg_test, avg_ref)
 
     # Output the cosine similarity rounded to four decimal places
-    print(f"Cosine similarity between '{reference}' and '{test}': {similarity:.4f}")
+    print(f"Cosine similarity between '{test}' and '{reference}': {similarity:.4f}")

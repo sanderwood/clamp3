@@ -1,21 +1,24 @@
-# Audio Feature Extraction
+# **Audio Feature Extraction**
+This folder provides scripts for extracting **MERT-based audio features**—the representation used by **CLaMP 3’s audio encoder**. These features are generated using the **MERT-v1-95M model**, which processes audio into **5-second non-overlapping segments** and averages across all layers and time steps to produce a **single feature per segment**.
 
-This code is based on the [MARBLE-Benchmark](https://github.com/a43992899/MARBLE-Benchmark/tree/ffcf8fdd1d465e20a61a31ddf649f4261873d32d/benchmark/models/musichubert_hf) source code.
+## **1. Create and Activate a Conda Environment**
+Set up your environment by running:
+```bash
+conda create -n mert-extraction python=3.8
+conda activate mert-extraction
+pip install -r requirements.txt
+```
 
-## Setup Instructions
+## **2. Download the MERT Model**
+Download [MERT-v1-95M](https://huggingface.co/m-a-p/MERT-v1-95M) model from Hugging Face.
 
-1. **Create and activate a Conda environment**:
-   ```bash
-   conda create -n marble python=3.8
-   conda activate marble
-   pip install -r requirements.txt
-   ```
+## **3. [extract_mert.py](https://github.com/sanderwood/clamp3/blob/main/preprocessing/audio/extract_mert.py)**
+**Step 1:** Extracts **MERT features** from audio files.
 
-2. **Download the HuBERT model** from Hugging Face:
-   - [Download Model](https://huggingface.co/m-a-p/MERT-v1-95M)
-
-3. **Extract audio features**:
-   ```bash
-   python extract_mert.py --input_path <input_path> --output_path <output_path> --model_path musichubert_hf/MERT-v1-95M --mean_features
-   ```
-
+- **Execution:**  
+  Run the script using the following command:
+  ```bash
+  python extract_mert.py --input_path <input_path> --output_path <output_path> --model_path musichubert_hf/MERT-v1-95M --mean_features
+  ```
+- **Input:** Audio files (`.mp3`, `.wav`).
+- **Output:** MERT-extracted features (`.npy`).
