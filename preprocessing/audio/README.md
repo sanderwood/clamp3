@@ -18,7 +18,7 @@ Download [MERT-v1-95M](https://huggingface.co/m-a-p/MERT-v1-95M) model from Hugg
 - **Execution:**  
   Run the script using the following command:
   ```bash
-  python extract_mert.py --input_path <input_path> --output_path <output_path> --model_path musichubert_hf/MERT-v1-95M --mean_features
+  python extract_mert.py --input_path <input_path> --output_path <output_path> --model_path m-a-p/MERT-v1-95M --mean_features
   ```
 - **Input:** Audio files (`.mp3`, `.wav`).
 - **Output:** MERT-extracted features (`.npy`).
