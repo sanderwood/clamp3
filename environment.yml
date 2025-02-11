@@ -148,6 +148,7 @@ dependencies:
       - multiprocess==0.70.16
       - music21==7.3.3
       - nltk==3.8.1
+      - nnAudio==0.3.3
       - numba==0.60.0
       - openai==1.51.2
       - optimum==1.21.4
