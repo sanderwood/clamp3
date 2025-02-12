@@ -12,8 +12,8 @@ def get_info(folder_path):
     
     for file in files:
         if file.endswith(".npy"):
-            key = file.split(".")[0]
-            features[key] = np.load(os.path.join(folder_path, file))[0]
+            key = file[:-4]
+            features[key] = np.load(os.path.join(folder_path, file)).squeeze()
     
     return features
 
