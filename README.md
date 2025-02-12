@@ -1,7 +1,8 @@
 # **CLaMP 3: Universal Music Information Retrieval Across Unaligned Modalities and Unseen Languages**
-[![Demo](https://img.shields.io/badge/CLaMP%203%20Demo-Coming%20Soon-lightgrey?style=for-the-badge&logo=gradio)](#)
+[![Homepage](https://img.shields.io/badge/CLaMP%203%20Homepage-Coming%20Soon-lightgrey?style=for-the-badge&logo=home-assistant)](#)
 [![Paper](https://img.shields.io/badge/CLaMP%203%20Paper-Coming%20Soon-lightgrey?style=for-the-badge&logo=arxiv)](#)
 [![GitHub](https://img.shields.io/badge/Code-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/sanderwood/clamp3)
+[![Demo](https://img.shields.io/badge/CLaMP%203%20Demo-Coming%20Soon-lightgrey?style=for-the-badge&logo=gradio)](#)
 [![Hugging Face](https://img.shields.io/badge/Model%20Weights-Hugging%20Face-ffcc00?style=for-the-badge&logo=huggingface)](https://huggingface.co/sander-wood/clamp3/tree/main)
 [![Dataset](https://img.shields.io/badge/M4--RAG%20Pretraining%20Dataset-Hugging%20Face-ffcc00?style=for-the-badge&logo=huggingface)](https://huggingface.co/datasets/sander-wood/m4-rag)
 [![Benchmark](https://img.shields.io/badge/WikiMT--X%20Evaluation%20Benchmark-Hugging%20Face-ffcc00?style=for-the-badge&logo=huggingface)](https://huggingface.co/datasets/sander-wood/wikimt-x)
@@ -122,14 +123,14 @@ After training (or using pre-trained weights), extract features using [`extract_
 ```bash
 accelerate launch extract_clamp3.py --epoch <epoch> <input_dir> <output_dir> [--get_global]
 ```
-- **`--epoch <epoch>`:** (Optional) Specify the checkpoint epoch.
-- **`<input_dir>`:** Directory containing the input files.
-- **`<output_dir>`:** Destination folder for the output `.npy` features.
-- **`--get_global`**: (Optional) Flag to extract a global semantic vector for each input.
+- **`--epoch <epoch>`:** (Optional) Specify the checkpoint epoch.  
+- **`<input_dir>`:** Directory containing the input files.  
+- **`<output_dir>`:** Destination folder for the output `.npy` features.  
+- **`--get_global`**: **(Required for retrieval!)** Extracts a **global semantic vector** for each input.  
 
 All extracted features are stored as `.npy` files.
 
-> **Note**: In this project, we use the global semantic vectors (via average pooling and a linear layer) for both classification and retrieval tasks.
+> **Note**: For retrieval, `--get_global` must be used. Without it, CLaMP 3 will not work correctly for retrieval tasks. You only omit `--get_global` if you are performing downstream fine-tuning or need raw feature extraction for custom tasks.
 
 ### **Retrieval and Classification**
 #### **1. Semantic Search**

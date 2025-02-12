@@ -81,10 +81,10 @@ This script uses the pre-trained CLaMP 3 model to extract representations from m
 ```bash
 accelerate launch extract_clamp3.py --epoch <epoch> <input_dir> <output_dir> [--get_global]
 ```
-- **`--epoch <epoch>`:** (Optional) Specify the checkpoint epoch.
-- **`<input_dir>`:** Directory containing the input files.
-- **`<output_dir>`:** Destination folder for the output `.npy` features.
-- **`--get_global`**: (Optional) Flag to extract global semantic vectors instead of temporal features.
+- **`--epoch <epoch>`:** (Optional) Specify the checkpoint epoch.  
+- **`<input_dir>`:** Directory containing the input files.  
+- **`<output_dir>`:** Destination folder for the output `.npy` features.  
+- **`--get_global`**: **(Required for retrieval!)** Extracts a **global semantic vector** for each input.  
 
 ### **4. [extract_m3.py](https://github.com/sanderwood/clamp3/blob/main/code/extract_m3.py)**
 This script extracts representations from sheet music and MIDI data using the pre-trained **M3** model.
