@@ -2,7 +2,7 @@
 [![Homepage](https://img.shields.io/badge/CLaMP%203%20Homepage-Coming%20Soon-lightgrey?style=for-the-badge&logo=home-assistant)](#)
 [![Paper](https://img.shields.io/badge/CLaMP%203%20Paper-Coming%20Soon-lightgrey?style=for-the-badge&logo=arxiv)](#)
 [![GitHub](https://img.shields.io/badge/Code-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/sanderwood/clamp3)
-[![Demo](https://img.shields.io/badge/CLaMP%203%20Demo-Coming%20Soon-lightgrey?style=for-the-badge&logo=gradio)](#)
+[![Demo](https://img.shields.io/badge/CLaMP%203%20Demo-Coming%20Soon-lightgrey?style=for-the-badge&logo=gradio)](https://github.com/sanderwood/clamp3)
 [![Hugging Face](https://img.shields.io/badge/Model%20Weights-Hugging%20Face-ffcc00?style=for-the-badge&logo=huggingface)](https://huggingface.co/sander-wood/clamp3/tree/main)
 [![Dataset](https://img.shields.io/badge/M4--RAG%20Pretraining%20Dataset-Hugging%20Face-ffcc00?style=for-the-badge&logo=huggingface)](https://huggingface.co/datasets/sander-wood/m4-rag)
 [![Benchmark](https://img.shields.io/badge/WikiMT--X%20Evaluation%20Benchmark-Hugging%20Face-ffcc00?style=for-the-badge&logo=huggingface)](https://huggingface.co/datasets/sander-wood/wikimt-x)
