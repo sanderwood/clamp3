@@ -1,7 +1,7 @@
 # **CLaMP 3: Universal Music Information Retrieval Across Unaligned Modalities and Unseen Languages**
 [![Homepage](https://img.shields.io/badge/CLaMP%203%20Homepage-Coming%20Soon-lightgrey?style=for-the-badge&logo=home-assistant)](#)
 [![Paper](https://img.shields.io/badge/CLaMP%203%20Paper-Coming%20Soon-lightgrey?style=for-the-badge&logo=arxiv)](#)
-[![GitHub](https://img.shields.io/badge/CLaMP%203%20Code-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/sanderwood/clamp3)
+[![GitHub](https://img.shields.io/badge/CLaMP%203%20Code-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/sander-wood/clamp3)
 [![Demo](https://img.shields.io/badge/CLaMP%203%20Demo-Gradio-green?style=for-the-badge&logo=gradio)](https://huggingface.co/spaces/sanderwood/clamp3)
 [![Hugging Face](https://img.shields.io/badge/Model%20Weights-Hugging%20Face-ffcc00?style=for-the-badge&logo=huggingface)](https://huggingface.co/sander-wood/clamp3/tree/main)
 [![Dataset](https://img.shields.io/badge/M4--RAG%20Dataset-Hugging%20Face-ffcc00?style=for-the-badge&logo=huggingface)](https://huggingface.co/datasets/sander-wood/m4-rag)
