@@ -90,7 +90,7 @@ python batch_midi2mtf.py
 For audio processing, CLaMP 3 uses **MERT-extracted features** instead of raw waveforms. Extract **MERT-based features** from raw audio (`.mp3`, `.wav`) using [`extract_mert.py`](https://github.com/sanderwood/clamp3/blob/main/preprocessing/audio/extract_mert.py):
 
 ```bash
-python extract_mert.py --input_path <input_path> --output_path <output_path> --model_path musichubert_hf/MERT-v1-95M --mean_features
+python extract_mert.py --input_path <input_path> --output_path <output_path> --model_path m-a-p/MERT-v1-95M --mean_features
 ```
 - **Input:** `.mp3`, `.wav`  
 - **Output:** `.npy` *(Processed audio features for CLaMP 3)*  
