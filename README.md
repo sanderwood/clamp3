@@ -1,4 +1,10 @@
 # **CLaMP 3: Universal Music Information Retrieval Across Unaligned Modalities and Unseen Languages**
+[![Demo](https://img.shields.io/badge/CLaMP%203%20Demo-Coming%20Soon-lightgrey?style=for-the-badge&logo=gradio)](#)
+[![Paper](https://img.shields.io/badge/CLaMP%203%20Paper-Coming%20Soon-lightgrey?style=for-the-badge&logo=arxiv)](#)
+[![GitHub](https://img.shields.io/badge/Code-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/sanderwood/clamp3)
+[![Hugging Face](https://img.shields.io/badge/Model%20Weights-Hugging%20Face-ffcc00?style=for-the-badge&logo=huggingface)](https://huggingface.co/sander-wood/clamp3/tree/main)
+[![Dataset](https://img.shields.io/badge/M4--RAG%20Pretraining%20Dataset-Hugging%20Face-ffcc00?style=for-the-badge&logo=huggingface)](https://huggingface.co/datasets/sander-wood/m4-rag)
+[![Benchmark](https://img.shields.io/badge/WikiMT--X%20Evaluation%20Benchmark-Hugging%20Face-ffcc00?style=for-the-badge&logo=huggingface)](https://huggingface.co/datasets/sander-wood/wikimt-x)
 
 <p align="center">
   <img src="overview.png" alt="CLaMP 3 Overview" width="50%">
@@ -30,21 +36,13 @@ CLaMP 3 supports a **wide range of music research tasks**, including but not lim
 
 Importantly, these applications are **not restricted to any specific music modality or language**, making CLaMP 3 a powerful tool for **diverse music AI research**.
 
-## **Links**
-- **CLaMP 3 Demo Page** *(Coming Soon...)*
-- **CLaMP 3 Paper** *(Coming Soon...)*
-- **[CLaMP 3 Code](https://github.com/sanderwood/clamp3)**
-- **[CLaMP 3 Model Weights](https://huggingface.co/sander-wood/clamp3/tree/main)**
-- **[M4-RAG Pre-training Dataset](https://huggingface.co/datasets/sander-wood/m4-rag)**
-- **[WikiMT-X Evaluation Benchmark](https://huggingface.co/datasets/sander-wood/wikimt-x)**
-
-> **Note:** Ensure the model weights are placed in the `code/` folder, and verify the **configuration hyperparameters** before use.
-
 ## **Repository Structure**
 - **[code/](https://github.com/sanderwood/clamp3/tree/main/code)** → Training & feature extraction scripts.
 - **[classification/](https://github.com/sanderwood/clamp3/tree/main/classification)** → Linear classification training and prediction.  
 - **[preprocessing/](https://github.com/sanderwood/clamp3/tree/main/preprocessing)** → Convert data into **Interleaved ABC, MTF, or MERT-extracted features**.  
 - **[retrieval/](https://github.com/sanderwood/clamp3/tree/main/retrieval)** → Semantic search, retrieval evaluation, and similarity calculations.  
+
+> **Note:** Ensure the model weights are placed in the `code/` folder, and verify the **configuration hyperparameters** before use.
 
 ## **Getting Started**
 ### **Environment Setup**
