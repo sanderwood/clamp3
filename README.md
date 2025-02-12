@@ -24,7 +24,7 @@ CLaMP 3 is a multimodal and multilingual framework for music information retriev
    - Trained on **27 languages** and generalizes to all **100 languages** supported by **[XLM-R](https://arxiv.org/abs/1911.02116)**.  
 
 - **Datasets & Benchmarking:**  
-   - **[M4-RAG](https://huggingface.co/datasets/sander-wood/m4-rag):** A **large-scale** dataset of **2.31M high-quality music-text pairs** across 27 languages and 194 countries.  
+   - **[M4-RAG](https://huggingface.co/datasets/sander-wood/m4-rag):** A **web-scale** dataset of **2.31M high-quality music-text pairs** across 27 languages and 194 countries.  
    - **[WikiMT-X](https://huggingface.co/datasets/sander-wood/wikimt-x):** A MIR benchmark containing **1,000 triplets** of sheet music, audio, and diverse text annotations.  
 
 ### **Applications**  
