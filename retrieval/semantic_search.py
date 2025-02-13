@@ -34,6 +34,9 @@ def main(query_file, features_folder, top_k=10):
 
     # Get the keys for the features
     keys = list(key_features.keys())
+
+    # Ensure top_k is within the range of available keys
+    top_k = min(top_k, len(keys))
     
     print(f"Top {top_k} similar items:")
     for i in range(top_k):
