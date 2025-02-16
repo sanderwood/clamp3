@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="DESCRIPTION META TAG">
+  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
+  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+
+  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>CLaMP 3 Home Page</title>
+  <link rel="icon" type="image/x-icon" href="static/images/clamp3.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">CLaMP 3: Universal Music Information Retrieval Across Unaligned Modalities and Unseen Languages</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=xiTqMNYAAAAJ&hl=en" target="_blank">Shangda Wu</a><sup>1</sup>,</span>
+                <span class="author-block">
+                  <a href="https://scholar.google.com/citations?hl=zh-CN&authuser=2&user=II-bnx4AAAAJ" target="_blank">Zhancheng Guo</a><sup>1</sup>,</span>
+                  <span class="author-block">
+                    <a href="https://scholar.google.com/citations?user=Qd_hX1cAAAAJ&hl=zh-CN" target="_blank">Ruibin Yuan</a><sup>2</sup>,</span>
+                    <span class="author-block">
+                      <a href="https://scholar.google.co.jp/citations?user=HCcK944AAAAJ&hl=ja" target="_blank">Junyan Jiang</a><sup>3, 4</sup>,</span>
+                      <span class="author-block">
+                      <a href="https://scholar.google.co.kr/citations?user=MCkggcgAAAAJ&hl=en" target="_blank">Seungheon Doh</a><sup>5</sup>,</span><br>
+                      <span class="author-block">
+                          <a href="https://scholar.google.com.hk/citations?user=h8-nXFcAAAAJ&hl=en" target="_blank">Gus Xia</a><sup>3, 4</sup>,</span>
+                          <span class="author-block">
+                              <a href="https://scholar.google.com/citations?user=eG2NHUYAAAAJ&hl=en" target="_blank">Juhan Nam</a><sup>5</sup>,</span>
+                              <span class="author-block">
+                                  Xiaobing Li<sup>1</sup>,</span>
+                                  <span class="author-block">
+                                      Feng Yu<sup>1</sup>,</span>
+                                      <span class="author-block">
+                                          <a href="https://scholar.google.com/citations?user=zIgT0HMAAAAJ&hl=en" target="_blank">Maosong Sun</a><sup>1, 6</sup></span>
+                      
+                  </span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <span class="eql-cntrb"><small><br><sup>1</sup>Central Conservatory of Music</small></span>
+                    <span class="eql-cntrb"><small><br><sup>2</sup>Hong Kong University of Science and Technology</small></span>
+                    <span class="eql-cntrb"><small><br><sup>3</sup>New York University Shanghai</small></span>
+                    <span class="eql-cntrb"><small><br><sup>4</sup>Mohamed bin Zayed University of Artificial Intelligence</small></span>
+                    <span class="eql-cntrb"><small><br><sup>5</sup>Korea Advanced Institute of Science and Technology</small></span>
+                    <span class="eql-cntrb"><small><br><sup>6</sup>Tsinghua University</small></span>
+                  </div>
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                        <!-- Paper link -->
+                        <span class="link-block">
+                            <a href="#" class="external-link button is-normal is-rounded is-dark">
+                                <span>📄 Read the Paper (Coming Soon)<span>
+                            </a>
+                        </span>
+                
+                        <!-- GitHub link -->
+                        <span class="link-block">
+                            <a href="https://github.com/sanderwood/clamp3" target="_blank"
+                               class="external-link button is-normal is-rounded is-dark">
+                                <span>🛠 GitHub Repository</span>
+                            </a>
+                        </span>
+                
+                        <!-- Gradio Demo link -->
+                        <span class="link-block">
+                            <a href="https://huggingface.co/spaces/sander-wood/clamp3" target="_blank"
+                               class="external-link button is-normal is-rounded is-dark">
+                                <span>✨ Try the Demo</span>
+                            </a>
+                        </span>
+                
+                        <!-- Hugging Face Model Weights link -->
+                        <span class="link-block">
+                            <a href="https://huggingface.co/sander-wood/clamp3/tree/main" target="_blank"
+                               class="external-link button is-normal is-rounded is-dark">
+                                <span>🤗 Model Weights</span>
+                            </a>
+                        </span>
+                
+                    </div>
+                </div>
+                
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser video-->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video poster="" id="tree" autoplay controls muted loop height="100%">
+        <!-- Your video here -->
+        <source src="static/videos/banner_video.mp4"
+        type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+<!-- End teaser video -->
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            CLaMP 3 is a unified framework developed to address challenges of cross-modal and cross-lingual generalization in music information retrieval. Using contrastive learning, it aligns all major music modalities—including sheet music, performance signals, and audio recordings—with multilingual text in a shared representation space, enabling retrieval across unaligned modalities with text as a bridge. It features a multilingual text encoder adaptable to unseen languages, exhibiting strong cross-lingual generalization. Leveraging retrieval-augmented generation, we curated M4-RAG, a web-scale dataset consisting of 2.31 million music-text pairs. This dataset is enriched with detailed metadata that represents a wide array of global musical traditions. To advance future research, we release WikiMT-X, a benchmark comprising 1,000 triplets of sheet music, audio, and richly varied text descriptions. Experiments show that CLaMP 3 achieves state-of-the-art performance on multiple MIR tasks, significantly surpassing previous strong baselines and demonstrating excellent generalization in multimodal and multilingual music contexts.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+<!-- Image carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+       
+        <!-- Image 1 -->
+        <div class="item image-item">
+          <img src="static/images/overview.jpg" alt="CLaMP 3 Overview" style="width: 50%; display: block; margin: auto;">
+          <h2 class="subtitle has-text-left">
+            <br>
+            Figure 1: CLaMP 3 uses contrastive learning to align features across modalities. Sheet music and performance signals are segmented into units (bars or MIDI messages) and processed by the symbolic music encoder, while audio is segmented into 5-second clips and processed through the audio feature extractor and audio music encoder. Both symbolic and audio representations are aligned with text representations from the multilingual text encoder.
+          </h2>
+        </div>
+
+        <!-- Image 2 -->
+        <div class="item image-item">
+          <img src="static/images/framework.jpg" alt="CLaMP 3 Framework" style="display: block; margin: auto;">
+          <h2 class="subtitle has-text-left">
+            <br>
+            Figure 2: CLaMP 3 uses contrastive learning to align features across modalities. Sheet music and performance signals are segmented into units (bars or MIDI messages) and processed by the symbolic music encoder, while audio is segmented into 5-second clips and processed through the audio feature extractor and audio music encoder. Both symbolic and audio representations are aligned with text representations from the multilingual text encoder.
+          </h2>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End image carousel -->
+
+
+<!-- Introduction -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Introduction</h2>
+        <div class="content has-text-justified">
+          <p>
+            A key aspect of Music Information Retrieval (MIR) is connecting music with language, enabling music to be retrieved through text descriptions. However, existing MIR systems lack robust multimodal and multilingual support, limiting their ability to capture music's full complexity. <br>
+            <br>
+            We developed CLaMP 3, a universal MIR framework trained on metadata in 27 languages and music from 194 countries, covering all major musical modalities. Trained with contrastive learning, it generalized to 100 languages and aligned musical modalities without supervision. <br>
+            <br>
+            All retrieved music in this page is from <a href="https://huggingface.co/datasets/sander-wood/wikimt-x" target="_blank" 
+            style="color: blue; font-weight: bold; font-size: 1.2rem;">
+            WikiMT-X</a>, a 1,000-piece benchmark, searched via the CLaMP 3 demo on <a href="https://huggingface.co/spaces/sander-wood/clamp3" target="_blank" 
+            style="color: blue; font-weight: bold; font-size: 1.2rem;">
+            Hugging Face Spaces</a>. For each query, we showcase the Top 1 retrieval result. <strong>Click on the images to play the retrieved music videos on YouTube.</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End introduction -->
+
+
+<!-- Text-to-Music Retrieval Section -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">English Text-to-Music Retrieval</h2>
+      
+      <!-- Carousel Container -->
+      <div id="video-carousel" class="carousel results-carousel">
+        
+        <!-- Video 1 (Clickable Thumbnail with Caption) -->
+        <div class="item video-item is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
+          <a href="https://www.youtube.com/watch?v=oxwAB3SECtc" target="_blank" style="display: block;">
+            <img src="static/images/oxwAB3SECtc.png" alt="I Saw Her Standing There"
+                 style="width: auto; height: auto; max-height: 300px; border-radius: 10px;">
+          </a>
+          <p class="has-text-centered" style="margin-top: 10px; font-size: 1.2rem; color: #333;">
+            <strong>Title:</strong> I Saw Her Standing There <br>
+            <strong>Query:</strong> classic rock, British, 1960s, upbeat
+          </p>
+        </div>
+
+        <!-- Video 2 (Clickable Thumbnail with Caption) -->
+        <div class="item video-item is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
+          <a href="https://www.youtube.com/watch?v=f8hDKJP9_p0" target="_blank" style="display: block;">
+            <img src="static/images/f8hDKJP9_p0.jpg" alt="Frenesi"
+                 style="width: auto; height: auto; max-height: 300px; border-radius: 10px;">
+          </a>
+          <p class="has-text-centered" style="margin-top: 10px; font-size: 1.2rem; color: #333;">
+            <strong>Title:</strong> Frenesi <br>
+            <strong>Query:</strong> A Latin jazz piece with rhythmic percussion and brass 
+          </p>
+        </div>
+
+        <!-- Video 3 (Clickable Thumbnail with Caption) -->
+        <div class="item video-item is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
+          <a href="https://www.youtube.com/watch?v=QwyK7dNr4ag" target="_blank" style="display: block;">
+            <img src="static/images/QwyK7dNr4ag.jpg" alt="Oh! Look At Me Now"
+                 style="width: auto; height: auto; max-height: 300px; border-radius: 10px;">
+          </a>
+          <p class="has-text-centered" style="margin-top: 10px; font-size: 1.2rem; color: #333;">
+            <strong>Title:</strong> Oh! Look At Me Now <br>
+            <strong>Query:</strong> big band, major key, swing, brass-heavy, syncopation, baritone vocal
+          </p>
+        </div>
+
+        <!-- Video 4 (Clickable Thumbnail with Caption) -->
+        <div class="item video-item is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
+          <a href="https://www.youtube.com/watch?v=z265BuKCQrc" target="_blank" style="display: block;">
+            <img src="static/images/z265BuKCQrc.jpg" alt="When You Were Sweet Sixteen"
+                 style="width: auto; height: auto; max-height: 300px; border-radius: 10px;">
+          </a>
+          <p class="has-text-centered" style="margin-top: 10px; font-size: 1.2rem; color: #333;">
+            <strong>Title:</strong> When You Were Sweet Sixteen <br>
+            <strong>Query:</strong> Heartfelt and nostalgic, with a bittersweet, melancholic feel
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End text-to-music retrieval -->
+
+
+<!-- Multilingual Text-to-Music Retrieval Section -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">Multilingual Text-to-Music Retrieval</h2>
+
+      <p class="subtitle has-text-centered">
+        <br>
+        CLaMP 3 maps text to music across languages, even those without training data, showing strong cross-lingual generalization.
+        <br>
+      </p>
+
+      <!-- Carousel Container -->
+      <div id="video-carousel" class="carousel results-carousel">
+        
+        <!-- Video 1 (Clickable Thumbnail with Caption) -->
+        <div class="item video-item is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
+          <a href="https://www.youtube.com/watch?v=NlprozGcs80" target="_blank" style="display: block;">
+            <img src="static/images/NlprozGcs80.jpg" alt="Canon In D Major"
+                 style="width: auto; height: auto; max-height: 300px; border-radius: 10px;">
+          </a>
+          <p class="has-text-centered" style="margin-top: 10px; font-size: 1.2rem; color: #333;">
+            <strong>Title:</strong> Canon In D Major <br>
+            <strong>Query (Spanish, seen during training):</strong> Melodía instrumental en re mayor con progresión armónica repetitiva y fluida <br>
+            <strong>Translation:</strong> Instrumental melody in D major with a repetitive and fluid harmonic progression
+          </p>
+        </div>
+
+        <!-- Video 2 (Clickable Thumbnail with Caption) -->
+        <div class="item video-item is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
+          <a href="https://www.youtube.com/watch?v=mrU23o3mBR8" target="_blank" style="display: block;">
+            <img src="static/images/mrU23o3mBR8.jpg" alt="Wearing Of The Green"
+                 style="width: auto; height: auto; max-height: 300px; border-radius: 10px;">
+          </a>
+          <p class="has-text-centered" style="margin-top: 10px; font-size: 1.2rem; color: #333;">
+            <strong>Title:</strong> Wearing Of The Green <br>
+            <strong>Query (Chinese, seen during training):</strong> D大调四四拍的爱尔兰舞曲 <br>
+            <strong>Translation:</strong> An Irish dance tune in D major and 4/4 time
+          </p>
+        </div>
+
+        <!-- Video 3 (Clickable Thumbnail with Caption) -->
+        <div class="item video-item is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
+          <a href="https://www.youtube.com/watch?v=SuUGPniE1D4" target="_blank" style="display: block;">
+            <img src="static/images/SuUGPniE1D4.jpg" alt="Holy God, We Praise Thy Name"
+                 style="width: auto; height: auto; max-height: 300px; border-radius: 10px;">
+          </a>
+          <p class="has-text-centered" style="margin-top: 10px; font-size: 1.2rem; color: #333;">
+            <strong>Title:</strong> Holy God, We Praise Thy Name <br>
+            <strong>Query (Greek, unseen during training):</strong> Ιερή μουσική με πνευματική ατμόσφαιρα <br>
+            <strong>Translation:</strong> Sacred music with a spiritual atmosphere
+          </p>
+        </div>
+
+        <!-- Video 4 (Clickable Thumbnail with Caption) -->
+        <div class="item video-item is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
+          <a href="https://www.youtube.com/watch?v=Xq9hu1WFcYM" target="_blank" style="display: block;">
+            <img src="static/images/Xq9hu1WFcYM.jpg" alt="When You Were Sweet Sixteen"
+                 style="width: auto; height: auto; max-height: 300px; border-radius: 10px;">
+          </a>
+          <p class="has-text-centered" style="margin-top: 10px; font-size: 1.2rem; color: #333;">
+            <strong>Title:</strong> If I Could Be With You (One Hour Tonight) <br>
+            <strong>Query (Amharic, unseen during training):</strong> የፍቅር ሙዚቃ ሞቅ እና ስሜታማ ከሆነ ነገር ግን ድንቅ እና አስደሳች ቃላት ያካትታል <br>
+            <strong>Translation:</strong> A love song that is warm and emotional, with beautiful and heartfelt lyrics
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End multilingual text-to-music retrieval -->
+
+
+<!-- Image-to-Music Retrieval Section -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">Image-to-Music Retrieval</h2>
+      
+      <p class="subtitle has-text-centered">
+        <br>
+        Additionally, CLaMP 3 is trained with scene depiction captions, learning visual semantics to describe suitable music contexts.
+        <br>
+        Leveraging this, image captioning models like BLIP can help CLaMP 3 to retrieve music that matches a given image's scene.
+        <br>
+      </p>
+
+      <!-- Carousel Container -->
+      <div id="video-carousel" class="carousel results-carousel">
+        
+        <!-- Video 1 (Clickable Thumbnail with Caption) -->
+        <div class="item video-item is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
+          <a href="https://www.youtube.com/watch?v=V4EauuhVEw4" target="_blank" style="display: block;">
+            <img src="static/images/V4EauuhVEw4.png" alt="Have Yourself A Merry Little Christmas"
+                 style="width: auto; height: auto; max-height: 300px; border-radius: 10px;">
+          </a>
+          <p class="has-text-centered" style="margin-top: 10px; font-size: 1.2rem; color: #333;">
+            <strong>Title:</strong> Have Yourself A Merry Little Christmas <br>
+            <strong>BLIP-generated Caption:</strong> a christmas tree in the harbor at night
+          </p>
+        </div>
+
+        <!-- Video 2 (Clickable Thumbnail with Caption) -->
+        <div class="item video-item is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
+          <a href="https://www.youtube.com/watch?v=Kw-_Ew5bVxs" target="_blank" style="display: block;">
+            <img src="static/images/Kw-_Ew5bVxs.png" alt="Pomp and Circumstance"
+                 style="width: auto; height: auto; max-height: 300px; border-radius: 10px;">
+          </a>
+          <p class="has-text-centered" style="margin-top: 10px; font-size: 1.2rem; color: #333;">
+            <strong>Title:</strong> Pomp and Circumstance <br>
+            <strong>BLIP-generated Caption:</strong> a group of graduates
+          </p>
+        </div>
+
+        <!-- Video 3 (Clickable Thumbnail with Caption) -->
+        <div class="item video-item is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
+          <a href="https://www.youtube.com/watch?v=BuYf0taXoNw" target="_blank" style="display: block;">
+            <img src="static/images/BuYf0taXoNw.png" alt="He's a Pirate"
+                 style="width: auto; height: auto; max-height: 300px; border-radius: 10px;">
+          </a>
+          <p class="has-text-centered" style="margin-top: 10px; font-size: 1.2rem; color: #333;">
+            <strong>Title:</strong> He's a Pirate <br>
+            <strong>BLIP-generated Caption:</strong> a pirate ship sailing in the ocean at sunset </p>
+        </div>
+
+        <!-- Video 4 (Clickable Thumbnail with Caption) -->
+        <div class="item video-item is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
+          <a href="https://www.youtube.com/watch?v=4tDYMayp6Dk" target="_blank" style="display: block;">
+            <img src="static/images/4tDYMayp6Dk.png" alt="Wedding March"
+                 style="width: auto; height: auto; max-height: 300px; border-radius: 10px;">
+          </a>
+          <p class="has-text-centered" style="margin-top: 10px; font-size: 1.2rem; color: #333;">
+            <strong>Title:</strong> Wedding March <br>
+            <strong>BLIP-generated Caption:</strong> a bride and groom are standing in front of the altar
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End image-to-music retrieval -->
+
+
+<!-- Cross-Modal Music Retrieval Section -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">Cross-Modal Music Retrieval</h2>
+      
+      <p class="subtitle has-text-centered">
+        <br>
+        CLaMP 3 enables cross-modal music retrieval, allowing queries like sheet music to find similar audio pieces.
+        <br>
+        It often finds semantically related works and sometimes different musical representations of the same piece.
+        <br>
+      </p>
+
+      <!-- Carousel Container -->
+      <div id="video-carousel" class="carousel results-carousel">
+        
+        <!-- Image 1 -->
+        <div class="item image-item">
+          <img src="static/images/Hallelujah Chorus.png" alt="Hallelujah Chorus" style="width: auto;  max-height: 300px; display: block; margin: auto;">
+          <h2 class="subtitle has-text-centered">
+            <br>
+            Query: Hallelujah Chorus (lead sheet) <br>
+          </h2>
+        </div>
+
+        <!-- Video 1 (Clickable Thumbnail with Caption) -->
+        <div class="item video-item is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
+          <a href="https://www.youtube.com/watch?v=BBZ7AfZR9xs" target="_blank" style="display: block;">
+            <img src="static/images/BBZ7AfZR9xs.jpg" alt="Hallelujah Chorus"
+                 style="width: auto; height: auto; max-height: 300px; border-radius: 10px;">
+          </a>
+          <p class="has-text-centered" style="margin-top: 10px; font-size: 1.2rem; color: #333;">
+            <strong>Top similar audio:</strong> Hallelujah Chorus <br>
+          </p>
+        </div>
+
+        <!-- Video 2 (Clickable Thumbnail with Caption) -->
+        <div class="item video-item is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
+          <a href="https://www.youtube.com/watch?v=hSKQt9rNwtQ" target="_blank" style="display: block;">
+            <img src="static/images/hSKQt9rNwtQ.jpg" alt="Battle Cry of Freedom"
+                 style="width: auto; height: auto; max-height: 300px; border-radius: 10px;">
+          </a>
+          <p class="has-text-centered" style="margin-top: 10px; font-size: 1.2rem; color: #333;">
+            <strong>Second similar audio:</strong> Battle Cry of Freedom <br>
+          </p>
+        </div>
+
+        <!-- Video 3 (Clickable Thumbnail with Caption) -->
+        <div class="item video-item is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
+          <a href="https://www.youtube.com/watch?v=yTSAZAHiOa8" target="_blank" style="display: block;">
+            <img src="static/images/yTSAZAHiOa8.jpg" alt="Funiculi, Funicula"
+                 style="width: auto; height: auto; max-height: 300px; border-radius: 10px;">
+          </a>
+          <p class="has-text-centered" style="margin-top: 10px; font-size: 1.2rem; color: #333;">
+            <strong>Third similar audio:</strong> Funiculi, Funicula <br>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End cross-modal music retrieval -->
+
+
+<!-- Zero-Shot Music Classification Section -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">Zero-Shot Music Classification</h2>
+  
+      <p class="subtitle has-text-centered">
+        <br>
+        CLaMP 3 performs zero-shot music classification by computing semantic similarity between queries and class prototypes.
+        <br>
+        This allows flexible, scalable classification without labeled training data.
+        <br>
+      </p>
+
+        <!-- Video 1 (Clickable Thumbnail with Caption) -->
+        <div class="item video-item is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
+          <a href="https://www.youtube.com/watch?v=ksi1cjYFoBs" target="_blank" style="display: block;">
+            <img src="static/images/ksi1cjYFoBs.png" alt="Brahms' Lullaby"
+                 style="width: auto; height: auto; max-height: 300px; border-radius: 10px;">
+          </a>
+          <p class="has-text-centered" style="margin-top: 10px; font-size: 1.2rem; color: #333;">
+            Zero-Shot music classification on Brahms' Lullaby <br>
+          </p>
+        </div>
+
+    </div>
+  </div>
+</section>
+<!-- End zero-shot music classification -->
+
+ <!-- Music Semantic Similarity Evaluation Section -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">Music Semantic Similarity Evaluation</h2>
+
+      <p class="subtitle has-text-left">
+        <br>
+        Here, we use both the prompt and SUNO v4-generated music as references to measure the semantic similarity of music generated by other systems. Using CLaMP 3, we calculate similarity scores for each model's output against these references. Results show that measured similarities closely align with human perception.
+        <br>
+      </p>
+
+      <!-- Table for Model Evaluation -->
+      <table style="width: 100%; border-collapse: collapse; text-align: center; font-size: 1.2rem; margin-top: 20px;">
+        <tr>
+            <th style="padding: 10px; line-height: 1.6;">Model</th>
+            <th style="padding: 10px; line-height: 1.6;">Prompt Sim↑</th>
+            <th style="padding: 10px; line-height: 1.6;">Suno v4 Sim↑</th>
+            <th style="padding: 10px; line-height: 1.6;">Audio</th>
+        </tr>
+        
+        <tr>
+            <td style="padding: 10px; line-height: 1.6;"><a href="https://suno.com/" target="_blank" style="display: block; color: blue;">SUNO v3.5</a></td>
+            <td style="padding: 10px; line-height: 1.6;">0.1822</td>
+            <td style="padding: 10px; line-height: 1.6;">0.8346</td>
+            <td style="padding: 10px; line-height: 1.6;">
+                <audio controls style="display: block; margin: auto;">
+                    <source src="static/mp3/suno_v3.5.mp3" type="audio/mpeg">
+                </audio>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="padding: 10px; line-height: 1.6;"><a href="https://www.tiangong.cn/music/" target="_blank" style="display: block; color: blue;">SkyMusic</a></td>
+            <td style="padding: 10px; line-height: 1.6;">0.2216</td>
+            <td style="padding: 10px; line-height: 1.6;">0.6269</td>
+            <td style="padding: 10px; line-height: 1.6;">
+                <audio controls style="display: block; margin: auto;">
+                    <source src="static/mp3/skymusic.mp3" type="audio/mpeg">
+                </audio>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="padding: 10px; line-height: 1.6;"><a href="https://github.com/multimodal-art-projection/YuE/" target="_blank" style="display: block; color: blue;">YuE</a></td>
+            <td style="padding: 10px; line-height: 1.6;">0.1821</td>
+            <td style="padding: 10px; line-height: 1.6;">0.5006</td>
+            <td style="padding: 10px; line-height: 1.6;">
+                <audio controls style="display: block; margin: auto;">
+                    <source src="static/mp3/yue.mp3" type="audio/mpeg">
+                </audio>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="padding: 10px; line-height: 1.6;"><a href="https://www.udio.com/home/" target="_blank" style="display: block; color: blue;">Udio</a></td>
+            <td style="padding: 10px; line-height: 1.6;">0.1744</td>
+            <td style="padding: 10px; line-height: 1.6;">0.4883</td>
+            <td style="padding: 10px; line-height: 1.6;">
+                <audio controls style="display: block; margin: auto;">
+                    <source src="static/mp3/udio.mp3" type="audio/mpeg">
+                </audio>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="padding: 10px; line-height: 1.6;"><a href="https://www.minimaxi.com/en/news/music-01/" target="_blank" style="display: block; color: blue;">MiniMax</a></td>
+            <td style="padding: 10px; line-height: 1.6;">0.1177</td>
+            <td style="padding: 10px; line-height: 1.6;">0.4388</td>
+            <td style="padding: 10px; line-height: 1.6;">
+                <audio controls style="display: block; margin: auto;">
+                    <source src="static/mp3/minimax.mp3" type="audio/mpeg">
+                </audio>
+            </td>
+        </tr>
+      </table>
+      
+      <p class="has-text-centered" style="margin-top: 20px; font-size: 1rem; color: #666;">
+        Note: Minimax failed to generate fully due to 1 min time constraints.
+      </p>
+
+      <br>
+      <br>
+
+      <!-- Reference: SUNO v4 Audio -->
+      <div class="has-text-centered" style="margin-bottom: 20px;">
+        <h3 class="title is-4">Audio Reference: SUNO v4</h3>
+        <audio controls style="margin-top: 10px;">
+          <source src="static/mp3/suno_v4.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+
+      <!-- Prompt Section -->
+      <div style="margin-top: 30px; padding: 15px; background-color: #1e1e1e; color: #ffffff; font-family: monospace; border-radius: 5px; overflow-x: auto;">
+        <h3 class="title is-4 has-text-centered">🎵 Music Generation Prompt</h3>
+        <pre style="white-space: pre-wrap; font-size: 1rem; line-height: 1.6;">
+          [Genre] synthesizer vocal uplifting electronic pop male positive
+
+          [verse]
+          I am Canadian, Canadian
+          I-I-I am Canadian, Canadian
+          My, my, my, my land of the free
+          These are all my pals, we are a team
+          Hey, hey, hey, no matter what you say
+          This is who I am and who I aim to be
+          (I aim to be)
+          
+          
+          [verse]
+          Everybody came here seekin' to be glad
+          From Boston to Dallas, land of joy we've had
+          Everybody came here seekin' to be glad
+          From Boston to Dallas, land of joy we've had
+          Everybody, everybody, everybody
+          (Oh, oh, oh)
+          
+          
+          [chorus]
+          I am American, glorious and true
+          I am American, land of hope and crew
+          Am-Am-Am-Am-Am-American, brave and new
+          I am American, with dreams to pursue
+          
+          
+          
+          [verse]
+          You-ou-ou, you hold the might
+          Fight for what you believe, we won't give up the fight
+          There's no way we'll turn back the light
+          Towards the future dear, it's yours and mine
+          
+          
+          [verse]
+          Everybody came here longing for a dream
+          From Miami to Chicago, land of hope it seems
+          Everybody came here longing for a dream
+          From Miami to Chicago, land of hope it seems
+          
+          
+          [chorus]
+          Each one, each one, each one
+          (Hey, hey, hey)
+          I am American, American, American
+          I am American, American, Green, yellow, and brown
+          Am-Am-Am-Am-Am-American, American, American
+          I am American, American, just like you now
+          
+          
+          
+          [bridge]
+          
+          I am Canadian, Canadian
+          I-I-I am Canadian, Canadian
+          I am Canadian, Canadian
+          I-I-I am Canadian, Canadian, I
+          
+          
+          [chorus]
+          I am Canadian, Canadian, Canadian
+          I am Canadian, Canadian, Red and white too
+          I am Canadian, Canadian, Canadian
+          I am Canadian, Canadian, just like you do
+          
+          
+          
+          [chorus]
+          Oh-Oh-Oh-Oh-Oh-American, American, American
+          I am American, American, Proud, brave, and true
+          I am American, American, American
+          I am American, American, as great as you do
+          
+          
+          [end]
+        </pre>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- End music semantic similarity evaluation section -->
+ 
+
+<!-- T-SNE Visualizations Section -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">t-SNE Visualizations on WikiMT-X</h2>
+  
+      <p class="subtitle has-text-centered">
+        <br>
+        Finally, we use t-SNE on WikiMT-X to visualize how CLaMP 3 organizes its learned music representations.
+        <br>
+        These visualizations reveal the distribution of musical modalities, languages, and semantic categories within the shared space.
+        <br>
+      </p>
+
+        <!-- Video 1 (Clickable Thumbnail with Caption) -->
+        <div class="item video-item is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
+          <a href="https://huggingface.co/datasets/sander-wood/wikimt-x" target="_blank" style="display: block;">
+            <img src="static/images/t-sne.png" alt="WikiMT-X"
+                 style="width: auto; height: auto; max-height: 600px; border-radius: 10px;">
+          </a>
+        </div>
+
+    </div>
+  </div>
+</section>
+<!-- End t-SNE visualizations -->
+ 
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>BibTex Code Here</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
