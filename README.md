@@ -1,5 +1,5 @@
 # **CLaMP 3: Universal Music Information Retrieval Across Unaligned Modalities and Unseen Languages**
-[![Homepage](https://img.shields.io/badge/CLaMP%203%20Homepage-Coming%20Soon-lightgrey?style=for-the-badge&logo=home-assistant)](#)
+[![Homepage](https://img.shields.io/badge/CLaMP%203%20Homepage-GitHub-181717?style=for-the-badge&logo=home-assistant)](https://sanderwood.github.io/clamp3/)
 [![Paper](https://img.shields.io/badge/CLaMP%203%20Paper-Coming%20Soon-lightgrey?style=for-the-badge&logo=arxiv)](#)
 [![GitHub](https://img.shields.io/badge/CLaMP%203%20Code-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/sanderwood/clamp3)
 [![Demo](https://img.shields.io/badge/CLaMP%203%20Demo-Gradio-green?style=for-the-badge&logo=gradio)](https://huggingface.co/spaces/sander-wood/clamp3)
@@ -112,8 +112,8 @@ python -m torch.distributed.launch --nproc_per_node=<GPUs> --use_env train_clamp
 ```
 
 Alternatively, you can use **pre-trained weights**:
-- **[CLaMP 3 SAAS (Optimal for Audio)](https://huggingface.co/sander-wood/clamp3/blob/main/weights_clamp3_saas.pth)**
-- **[CLaMP 3 C2 (Optimal for Symbolic Music)](https://huggingface.co/sander-wood/clamp3/blob/main/weights_clamp3_c2.pth)**  
+- **[CLaMP 3 SAAS (Optimal for Audio)](https://huggingface.co/sander-wood/clamp3/blob/main/weights_clamp3_saas_h_size_768_t_model_FacebookAI_xlm-roberta-base_t_length_128_a_size_768_a_layers_12_a_length_128_s_size_768_s_layers_12_p_size_64_p_length_512.pth)**
+- **[CLaMP 3 C2 (Optimal for Symbolic Music)](https://huggingface.co/sander-wood/clamp3/blob/main/weights_clamp3_c2_h_size_768_t_model_FacebookAI_xlm-roberta-base_t_length_128_a_size_768_a_layers_12_a_length_128_s_size_768_s_layers_12_p_size_64_p_length_512.pth)**  
 
 By default, CLaMP 3 is configured for the **SAAS version**, which provides **optimal performance on audio data**. If working primarily with **symbolic music**, download the **C2 variant** and modify **line 66 in `config.py`** from **saas** to **c2**.
 
