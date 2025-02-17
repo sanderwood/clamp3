@@ -10,8 +10,8 @@ This script calculates cosine similarity between average feature vectors from tw
 ```bash
 python clamp3_score.py <test_folder> <reference_folder>
 ```
-- **`test_folder`**: Folder containing test `.npy` files.
-- **`reference_folder`**: Folder containing reference `.npy` files.
+- **`<test_folder>`**: Folder containing test `.npy` files.
+- **`<reference_folder>`**: Folder containing reference `.npy` files.
 
 > **Note:** When evaluating generated music, ensure that the generated and reference music share similar distributions (e.g., both are jazz pieces), to minimize confounding factors and get a more accurate evaluation.
 
