@@ -12,7 +12,7 @@ def get_info(folder_path):
     
     for file in files:
         if file.endswith(".npy"):
-            key = file[:-4]
+            key = file.split(".")[0]
             features[key] = np.load(os.path.join(folder_path, file)).squeeze()
     
     return features
@@ -34,13 +34,14 @@ def main(query_file, features_folder, top_k=10):
 
     # Get the keys for the features
     keys = list(key_features.keys())
-
-    # Ensure top_k is within the range of available keys
+    
+    # Set top_k to the minimum of the number of features and the specified top_k
     top_k = min(top_k, len(keys))
     
+    # Round to 4 decimal places for similarity scores
     print(f"Top {top_k} similar items:")
     for i in range(top_k):
-        print(keys[ranked_indices[i]], similarities[ranked_indices[i]].item())
+        print(keys[ranked_indices[i]], round(similarities[ranked_indices[i]].item(), 4))
 
 if __name__ == '__main__':
     # Set up argument parsing for input paths
