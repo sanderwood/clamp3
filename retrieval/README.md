@@ -70,3 +70,4 @@ python eval_mrr.py <query_folder> <reference_folder>
   - **Hit@1**
   - **Hit@10**
   - **Hit@100**
+  - **Average Pair Similarity**

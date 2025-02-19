@@ -32,7 +32,7 @@ def calculate_metrics(query_features, reference_features):
     """
     common_keys = set(query_features.keys()) & set(reference_features.keys())
     print(len(common_keys), "common keys found.")
-    mrr, hit_1, hit_10, hit_100, total_query = 0, 0, 0, 0, 0
+    mrr, hit_1, hit_10, hit_100, total_similarity, total_query = 0, 0, 0, 0, 0, 0
 
     for idx, key in enumerate(tqdm(common_keys)):
         # Get all query features for the current key
@@ -68,12 +68,17 @@ def calculate_metrics(query_features, reference_features):
                     hit_10 += 1
                     if idx in ranks[:1]:
                         hit_1 += 1
+            
+            # Update total similarity
+            total_similarity += similarities[idx].item()
 
     # Compute the final metrics
     print(f"MRR: {round(mrr / total_query, 4)}")
     print(f"Hit@1: {round(hit_1 / total_query, 4)}")
     print(f"Hit@10: {round(hit_10 / total_query, 4)}")
     print(f"Hit@100: {round(hit_100 / total_query, 4)}")
+    print(f"Avg. pair similarity: {round(total_similarity / total_query, 4)}")
+    print(f"Total queries: {total_query}")
 
 if __name__ == '__main__':
     # Set up argument parsing for input directories
