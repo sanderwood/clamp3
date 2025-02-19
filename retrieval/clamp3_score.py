@@ -7,10 +7,10 @@ def load_npy_files(folder_path):
     Load all .npy files from a specified folder and return a list of numpy arrays.
     """
     npy_list = []
-    for subdir, _, files in os.walk(folder_path):
+    for root, dirs, files in os.walk(folder_path):
         for file_name in files:
             if file_name.endswith('.npy'):
-                file_path = os.path.join(subdir, file_name)
+                file_path = os.path.join(root, file_name)
                 np_array = np.load(file_path).squeeze()
                 npy_list.append(np_array)
     return npy_list

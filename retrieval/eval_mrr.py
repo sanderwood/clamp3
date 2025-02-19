@@ -12,7 +12,7 @@ def get_features(path):
     features = {}
     
     # Traverse all files in the directory
-    for root, _, files in os.walk(path):
+    for root, dirs, files in os.walk(path):
         for file in files:
             if file.endswith(".npy"):
                 key = file.split(".")[0]
