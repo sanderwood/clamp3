@@ -74,7 +74,7 @@ def process_directory(input_path, output_path, files, mean_features=False):
             with open("log.txt", "a") as f:
                 f.write(output_dir + " can not be created\n" + str(e) + "\n")
 
-        output_file = os.path.join(output_dir, os.path.basename(file) + ".npy")
+        output_file = os.path.join(output_dir, os.path.splitext(os.path.basename(file))[0] + ".npy")
 
         if os.path.exists(output_file):
             print(f"Skipping {file}, output already exists")
