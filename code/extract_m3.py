@@ -8,6 +8,7 @@ from samplings import *
 from accelerate import Accelerator
 from transformers import BertConfig, GPT2Config
 import argparse
+import requests
 
 # Parse command-line arguments for input_dir and output_dir
 parser = argparse.ArgumentParser(description="Process files to extract features.")
@@ -58,7 +59,32 @@ print("Total Parameter Number: "+str(sum(p.numel() for p in model.parameters()))
 
 # Load model weights
 model.eval()
-checkpoint = torch.load(M3_WEIGHTS_PATH, map_location='cpu', weights_only=True)
+checkpoint_path = M3_WEIGHTS_PATH
+
+if not os.path.exists(checkpoint_path):
+    print("No M3 weights found. Downloading from Hugging Face...")
+    checkpoint_url = "https://huggingface.co/sander-wood/clamp2/resolve/main/weights_m3_p_size_64_p_length_512_t_layers_3_p_layers_12_h_size_768_lr_0.0001_batch_16_mask_0.45.pth"
+    checkpoint_path = "weights_m3_p_size_64_p_length_512_t_layers_3_p_layers_12_h_size_768_lr_0.0001_batch_16_mask_0.45.pth"
+
+    response = requests.get(checkpoint_url, stream=True)
+    response.raise_for_status()
+    total_size = int(response.headers.get('content-length', 0))
+
+    with open(checkpoint_path, "wb") as f, tqdm(
+        desc="Downloading",
+        total=total_size,
+        unit="B",
+        unit_scale=True,
+        unit_divisor=1024,
+    ) as bar:
+        for chunk in response.iter_content(chunk_size=8192):
+            if chunk:
+                f.write(chunk)
+                bar.update(len(chunk))
+
+    print("Weights file downloaded successfully.")
+
+checkpoint = torch.load(checkpoint_path, map_location='cpu', weights_only=True)
 print(f"Successfully Loaded Checkpoint from Epoch {checkpoint['epoch']} with loss {checkpoint['min_eval_loss']}")
 model.load_state_dict(checkpoint['model'])
 
