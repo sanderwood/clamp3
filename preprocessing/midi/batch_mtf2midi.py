@@ -1,13 +1,30 @@
-input_dir = "<path_to_your_mtf_files>"  # Replace with the path to your folder containing MTF (.mtf) files
-
 import os
 import math
 import mido
 import random
+import argparse
 from tqdm import tqdm
 from multiprocessing import Pool
 
+# Parse command-line arguments
+def parse_args():
+    parser = argparse.ArgumentParser(description="Convert MTF files to MIDI format.")
+    parser.add_argument(
+        "input_dir",
+        type=str,
+        help="Path to the folder containing MTF (.mtf) files"
+    )
+    parser.add_argument(
+        "output_dir",
+        type=str,
+        help="Path to the folder where converted MIDI files will be saved"
+    )
+    return parser.parse_args()
+
 def str_to_msg(str_msg):
+    """
+    Converts a string representation of a MIDI message back into a mido.Message object.
+    """
     type = str_msg.split(" ")[0]
     try:
         msg = mido.Message(type)
@@ -43,13 +60,16 @@ def str_to_msg(str_msg):
 
     return msg
 
-def convert_mtf2midi(file_list):
+def convert_mtf2midi(file_list, input_dir, output_dir):
+    """
+    Converts MTF files to MIDI format.
+    """
     for file in tqdm(file_list):
-        filename = file.split('/')[-1]
-        output_dir = file.split('/')[:-1]
-        output_dir[0] = output_dir[0] + '_midi'
-        output_dir = '/'.join(output_dir)
-        os.makedirs(output_dir, exist_ok=True)
+        # Construct the output directory by replacing input_dir with output_dir
+        relative_path = os.path.relpath(os.path.dirname(file), input_dir)
+        output_folder = os.path.join(output_dir, relative_path)
+        os.makedirs(output_folder, exist_ok=True)
+
         try:
             with open(file, 'r', encoding='utf-8') as f:
                 msg_list = f.read().splitlines()
@@ -67,17 +87,22 @@ def convert_mtf2midi(file_list):
                 new_msg = str_to_msg(msg)
                 track.append(new_msg)
 
-            output_file_path = os.path.join(output_dir, os.path.basename(file).replace('.mtf', '.mid'))
+            output_file_path = os.path.join(output_folder, os.path.splitext(os.path.basename(file))[0] + '.mid')
             new_mid.save(output_file_path)
         except Exception as e:
             with open('logs/mtf2midi_error_log.txt', 'a', encoding='utf-8') as f:
                 f.write(f"Error processing {file}: {str(e)}\n")
 
 if __name__ == '__main__':
+    # Parse command-line arguments
+    args = parse_args()
+    input_dir = os.path.abspath(args.input_dir)  # Ensure absolute path
+    output_dir = os.path.abspath(args.output_dir)  # Ensure absolute path
+
     file_list = []
     os.makedirs("logs", exist_ok=True)
 
-    # Traverse the specified folder for MTF files
+    # Traverse the specified input folder for MTF files
     for root, dirs, files in os.walk(input_dir):
         for file in files:
             if not file.endswith(".mtf"):
@@ -93,5 +118,9 @@ if __name__ == '__main__':
         end_idx = int(math.floor((i + 1) * len(file_list) / os.cpu_count()))
         file_lists.append(file_list[start_idx:end_idx])
 
+    # Use multiprocessing to speed up conversion
     pool = Pool(processes=os.cpu_count())
-    pool.map(convert_mtf2midi, file_lists)
+    pool.starmap(
+        convert_mtf2midi, 
+        [(file_list_chunk, input_dir, output_dir) for file_list_chunk in file_lists]
+    )

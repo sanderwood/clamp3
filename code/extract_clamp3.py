@@ -8,6 +8,7 @@ from samplings import *
 from accelerate import Accelerator
 from transformers import BertConfig, AutoTokenizer
 import argparse
+import requests
 
 # Parse command-line arguments
 parser = argparse.ArgumentParser(description="Feature extraction for CLaMP3.")
@@ -68,6 +69,30 @@ model.eval()
 checkpoint_path = CLAMP3_WEIGHTS_PATH
 if epoch is not None:
     checkpoint_path = CLAMP3_WEIGHTS_PATH.replace(".pth", f"_{epoch}.pth")
+
+if not os.path.exists(checkpoint_path):
+    print("No CLaMP 3 weights found. Downloading from Hugging Face...")
+    checkpoint_url = "https://huggingface.co/sander-wood/clamp3/resolve/main/weights_clamp3_saas_h_size_768_t_model_FacebookAI_xlm-roberta-base_t_length_128_a_size_768_a_layers_12_a_length_128_s_size_768_s_layers_12_p_size_64_p_length_512.pth"
+    checkpoint_path = "weights_clamp3_saas_h_size_768_t_model_FacebookAI_xlm-roberta-base_t_length_128_a_size_768_a_layers_12_a_length_128_s_size_768_s_layers_12_p_size_64_p_length_512.pth"
+
+    response = requests.get(checkpoint_url, stream=True)
+    response.raise_for_status()
+    total_size = int(response.headers.get('content-length', 0))
+
+    with open(checkpoint_path, "wb") as f, tqdm(
+        desc="Downloading",
+        total=total_size,
+        unit="B",
+        unit_scale=True,
+        unit_divisor=1024,
+    ) as bar:
+        for chunk in response.iter_content(chunk_size=8192):
+            if chunk:
+                f.write(chunk)
+                bar.update(len(chunk))
+
+    print("Weights file downloaded successfully.")
+
 checkpoint = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
 print(f"Successfully Loaded CLaMP 3 Checkpoint from Epoch {checkpoint['epoch']} with loss {checkpoint['min_eval_loss']}")
 model.load_state_dict(checkpoint['model'])

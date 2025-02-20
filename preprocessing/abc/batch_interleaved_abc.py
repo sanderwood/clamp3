@@ -1,8 +1,7 @@
-input_dir = "<path_to_your_abc_files>"  # Replace with the path to your folder containing standard ABC (.abc) files
-
 import os
 import re
 import random
+import argparse
 from multiprocessing import Pool
 from tqdm import tqdm
 from abctoolkit.utils import (
@@ -15,6 +14,21 @@ from abctoolkit.utils import (
 )
 from abctoolkit.rotate import rotate_abc
 from abctoolkit.check import check_alignment_unrotated
+
+# Parse command-line arguments
+def parse_args():
+    parser = argparse.ArgumentParser(description="Convert standard ABC notation to interleaved ABC notation.")
+    parser.add_argument(
+        "input_dir",
+        type=str,
+        help="Path to the folder containing standard ABC (.abc) files"
+    )
+    parser.add_argument(
+        "output_dir",
+        type=str,
+        help="Path to the folder where converted ABC files will be saved"
+    )
+    return parser.parse_args()
 
 def abc_pipeline(abc_path, input_dir, output_dir):
     """
@@ -58,10 +72,10 @@ def abc_pipeline(abc_path, input_dir, output_dir):
     if not bar_dur_equal_flag:
         print(abc_path, 'Unequal bar duration (unaligned)')
 
-    # Construct the output path, maintaining input folder structure
-    relative_path = os.path.relpath(abc_path, input_dir)  # Get relative path from input dir
-    output_file_path = os.path.join(output_dir, relative_path)  # Recreate output path
-    os.makedirs(os.path.dirname(output_file_path), exist_ok=True)  # Ensure output folder exists
+    # Construct the output path by replacing input_dir with output_dir
+    relative_path = os.path.relpath(abc_path, input_dir)
+    output_file_path = os.path.join(output_dir, relative_path)
+    os.makedirs(os.path.dirname(output_file_path), exist_ok=True)
 
     try:
         rotated_abc_lines = rotate_abc(stripped_abc_lines)
@@ -84,18 +98,14 @@ def abc_pipeline_list(abc_path_list, input_dir, output_dir):
             print(abc_path, e)
             pass
 
-def batch_abc_pipeline(input_dir):
+def batch_abc_pipeline(input_dir, output_dir):
     """
-    Batch process all ABC files from `input_dir`, converting them to interleaved notation.
+    Batch process all ABC files from `input_dir`, converting them to interleaved notation and saving them in `output_dir`.
     """
-    output_dir = input_dir + "_interleaved"
     if not os.path.exists(output_dir):
         os.makedirs(output_dir, exist_ok=True)
 
-    abc_path_list = []
-    for abc_path in find_all_abc(input_dir):
-        if os.path.getsize(abc_path) > 0:
-            abc_path_list.append(abc_path)
+    abc_path_list = [abc_path for abc_path in find_all_abc(input_dir) if os.path.getsize(abc_path) > 0]
     random.shuffle(abc_path_list)
     print(f"Found {len(abc_path_list)} ABC files.")
 
@@ -114,4 +124,9 @@ def batch_abc_pipeline(input_dir):
     )
 
 if __name__ == '__main__':
-    batch_abc_pipeline(input_dir)
+    # Parse command-line arguments
+    args = parse_args()
+    input_dir = os.path.abspath(args.input_dir)  # Ensure absolute path
+    output_dir = os.path.abspath(args.output_dir)  # Ensure absolute path
+
+    batch_abc_pipeline(input_dir, output_dir)

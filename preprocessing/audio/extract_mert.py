@@ -113,7 +113,7 @@ if __name__ == "__main__":
     files = []
     for root, dirs, fs in os.walk(input_path):
         for f in fs:
-            if f.endswith(".mp3") or f.endswith(".wav") or f.endswith(".flac"):
+            if f.endswith(("wav", "mp3")):
                 files.append(os.path.join(root, f))
     print(f"Found {len(files)} files in total")
     with open("files.json", "w", encoding="utf-8") as f:

@@ -41,54 +41,145 @@ CLaMP 3 unifies diverse music data and text into a shared representation space, 
 
 For examples demonstrating these capabilities, visit [CLaMP 3 Homepage](https://sanderwood.github.io/clamp3/).
 
+### **Quick Start Guide**  
+For users who want to get started quickly without delving into the details, follow these steps:
+
+### **Install Environment**  
+```bash
+conda create -n clamp3 python=3.10.16 -y
+conda activate clamp3
+conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia -y
+pip install -r requirements.txt
+```
+
+### **Overview of `clamp3_*.py` Scripts**  
+CLaMP 3 provides the `clamp3_*.py` script series for **single-command data preprocessing, feature extraction, retrieval, and evaluation**. These scripts automatically detect and process different modalities, requiring minimal setup.
+
+**Common Features of `clamp3_*.py` Scripts:**  
+- **End-to-End Processing**: Each script handles data preprocessing, feature extraction, and similarity computation in a single run.  
+- **Automatic Modality Detection**: Supports **audio (`.mp3`, `.wav`), performance signals (`.mid`, `.midi`), sheet music (`.mxl`, `.musicxml`, `.xml`), images (`.png`, `.jpg`), and text (`.txt`)**.  
+
+- **First-Time Model Download**:  
+  - The first time you run any `clamp3_*.py` script, the necessary model weights for **[CLaMP 3 (SAAS)](https://huggingface.co/sander-wood/clamp3/blob/main/weights_clamp3_saas_h_size_768_t_model_FacebookAI_xlm-roberta-base_t_length_128_a_size_768_a_layers_12_a_length_128_s_size_768_s_layers_12_p_size_64_p_length_512.pth)** and **[MERT-v1-95M](https://huggingface.co/m-a-p/MERT-v1-95M)** will be downloaded automatically.  
+  - Once downloaded, the models are cached and will not be re-downloaded in subsequent runs.  
+
+- **Feature Management**:  
+  - Extracted features are stored in `inference/` and **are not overwritten** if they already exist. This prevents redundant computations, which is especially useful when processing large datasets since feature extraction can be time-consuming.  
+  - **If you need to run retrieval on a different dataset**, manually delete the corresponding modality folder inside `inference/` (e.g., remove `inference/audio_features/` when switching to a new batch of audio files). Otherwise, the script will reuse previously extracted features.  
+  - Temporary files are stored in `temp/` and **automatically cleared on each run**.  
+
+- **Same-Modality Requirement**: All files within a folder must belong to the same modality.
+
+#### **[`clamp3_search.py`](https://github.com/sanderwood/clamp3/blob/main/clamp3_search.py) - Running Retrieval Tasks**  
+```bash
+python clamp3_search.py <query_file> <ref_dir>
+```
+- **Text-to-Music Retrieval**: Query is a `.txt` file, `ref_dir` contains music files.  
+- **Image-to-Music Retrieval**: Query is an image (`.png`, `.jpg`), `ref_dir` contains music files. **BLIP** generates captions for search.  
+- **Music-to-Music Retrieval**: Query is a music file, `ref_dir` contains music files (can be same or different modality). Supports **cross-modal retrieval** (e.g., retrieving audio using sheet music).  
+- **Zero-Shot Classification**: Query is a music file, `ref_dir` contains **text-based class prototypes** (e.g., `"It is classical"`, `"It is jazz"`). The highest similarity match is the classification result.  
+
+#### **[`clamp3_eval.py`](https://github.com/sanderwood/clamp3/blob/main/clamp3_eval.py) - Evaluating Retrieval Performance**  
+```bash
+python clamp3_eval.py <query_dir> <ref_dir>
+```
+- **Measures retrieval accuracy** (MRR, Hit@K) and **semantic similarity** (Avg. pair sim).  
+- Requires **matching folder structures and filenames** between `query_dir` and `ref_dir`.  
+
+  **Example folder structure:**  
+  ```
+  query_dir/  
+  ├── en/  
+  │   ├── sample1.txt  
+  │   ├── sample2.txt  
+  │   ├── sample3.txt  
+  │   └── ...  
+  ├── zh/  
+  │   ├── sample1.txt  
+  │   ├── sample2.txt  
+  │   ├── sample3.txt  
+  │   └── ...  
+  ```
+
+  ```
+  ref_dir/  
+  ├── en/  
+  │   ├── sample1.wav  
+  │   ├── sample2.wav  
+  │   ├── sample3.wav  
+  │   └── ...  
+  ├── zh/  
+  │   ├── sample1.wav  
+  │   ├── sample2.wav  
+  │   ├── sample3.wav  
+  │   └── ...  
+  ```
+
+  - Here, `query_dir/en/sample1.txt` is paired with `ref_dir/en/sample1.wav`, and `query_dir/zh/sample2.txt` is paired with `ref_dir/zh/sample2.wav`.  
+  - The folder structure and filenames must match exactly for correct evaluation.
+- **Example Output:**  
+  ```
+  MRR: 0.2882
+  Hit@1: 0.181
+  Hit@10: 0.509
+  Hit@100: 0.866
+  Avg. pair sim: 0.4445
+  Total pairs: 1000
+  ```
+  - **Higher MRR / Hit@K** → Better retrieval performance.  
+  - **Higher Avg. pair sim** → Stronger semantic similarity between query-ref pairs.  
+  - **Cross-modal similarity is lower due to modality gaps.**  
+
+#### **[`clamp3_score.py`](https://github.com/sanderwood/clamp3/blob/main/clamp3_score.py) - Computing Semantic Similarity**  
+```bash
+python clamp3_score.py <query_dir> <ref_dir>
+```
+- **Computes overall semantic similarity** between two datasets.  
+- **Differences from [`clamp3_eval.py`](https://github.com/sanderwood/clamp3/blob/main/clamp3_eval.py):**  
+  1. **Only returns similarity scores** (no retrieval metrics like MRR/Hit@K).  
+  2. **Calculates dataset-level similarity** instead of individual query-ref pairs.  
+- Useful for **evaluating generated music vs. ground truth** in generative modeling.  
+
 ## **Repository Structure**
 - **[code/](https://github.com/sanderwood/clamp3/tree/main/code)** → Training & feature extraction scripts.
 - **[classification/](https://github.com/sanderwood/clamp3/tree/main/classification)** → Linear classification training and prediction.  
+- **[inference/](https://github.com/sanderwood/clamp3/tree/main/inference)** → Semantic search, retrieval evaluation, and similarity calculations.  
 - **[preprocessing/](https://github.com/sanderwood/clamp3/tree/main/preprocessing)** → Convert data into Interleaved ABC, MTF, or MERT-extracted features.  
-- **[retrieval/](https://github.com/sanderwood/clamp3/tree/main/retrieval)** → Semantic search, retrieval evaluation, and similarity calculations.  
 
 > **Note:** Ensure the model weights are placed in the `code/` folder, and verify the configuration hyperparameters before use.
 
-## **Getting Started**
-### **Environment Setup**
-To set up the environment for CLaMP 3, run:  
-```bash
-conda env create -f environment.yml
-conda activate clamp3
-```
-
+## **Key Script Overview**
 ### **Data Preparation**
 #### **1. Convert Music Data to Compatible Formats**
 Before using CLaMP 3, preprocess **MusicXML files** into **Interleaved ABC**, **MIDI files** into **MTF**, and **audio files** into **MERT-extracted features**.
 
-> **Note:** Each script requires a manual edit of the `input_dir` variable at the top of the file before running, except for the MERT extraction script (`extract_mert.py`), which takes command-line arguments for input and output paths.
+##### **1.1 Convert MusicXML to Interleaved ABC Notation**  
 
-##### **1.1 Convert MusicXML to Interleaved ABC Notation**
+CLaMP 3 requires **Interleaved ABC notation** for sheet music. Follow these steps:
 
-CLaMP 3 requires **Interleaved ABC notation** for sheet music. To achieve this, first, convert **MusicXML** (`.mxl`, `.xml`, `.musicxml`) to **standard ABC** using [`batch_xml2abc.py`](https://github.com/sanderwood/clamp3/blob/main/preprocessing/abc/batch_xml2abc.py):
+1. Convert **MusicXML** (`.mxl`, `.xml`, `.musicxml`) to **standard ABC** using [`batch_xml2abc.py`](https://github.com/sanderwood/clamp3/blob/main/preprocessing/abc/batch_xml2abc.py):  
+   ```bash
+   python batch_xml2abc.py <input_dir> <output_dir>
+   ```
+   - **Input:** Directory containing `.mxl`, `.xml`, `.musicxml` files  
+   - **Output:** Directory where converted `.abc` (Standard ABC) files will be saved  
 
+2. Convert **Standard ABC** into **Interleaved ABC** using [`batch_interleaved_abc.py`](https://github.com/sanderwood/clamp3/blob/main/preprocessing/abc/batch_interleaved_abc.py):  
+   ```bash
+   python batch_interleaved_abc.py <input_dir> <output_dir>
+   ```
+   - **Input:** Directory containing `.abc` (Standard ABC) files  
+   - **Output:** Directory where Interleaved ABC files will be saved *(for CLaMP 3 use)*  
+
+##### **1.2 Convert MIDI to MTF Format**  
+
+CLaMP 3 processes performance signals in **MIDI Text Format (MTF)**. Convert **MIDI files** (`.mid`, `.midi`) into **MTF format** using [`batch_midi2mtf.py`](https://github.com/sanderwood/clamp3/blob/main/preprocessing/midi/batch_midi2mtf.py):  
 ```bash
-python batch_xml2abc.py
+python batch_midi2mtf.py <input_dir> <output_dir> --m3_compatible
 ```
-- **Input:** `.mxl`, `.xml`, `.musicxml`  
-- **Output:** `.abc` (Standard ABC)
- 
-Next, process the standard ABC files into **Interleaved ABC notation** using [`batch_interleaved_abc.py`](https://github.com/sanderwood/clamp3/blob/main/preprocessing/abc/batch_interleaved_abc.py):
-
-```bash
-python batch_interleaved_abc.py
-```
-- **Input:** `.abc` (Standard ABC)  
-- **Output:** `.abc` *(Interleaved ABC for CLaMP 3)*  
-
-##### **1.2 Convert MIDI to MTF Format**
-CLaMP 3 processes performance signals in **MIDI Text Format (MTF)**. Convert **MIDI files** (`.mid`, `.midi`) into **MTF format** using [`batch_midi2mtf.py`](https://github.com/sanderwood/clamp3/blob/main/preprocessing/midi/batch_midi2mtf.py):
-
-```bash
-python batch_midi2mtf.py
-```
-- **Input:** `.mid`, `.midi`  
-- **Output:** `.mtf` *(MTF for CLaMP 3)*  
+- **Input:** Directory containing `.mid`, `.midi` files  
+- **Output:** Directory where `.mtf` files will be saved *(MTF format for CLaMP 3)*  
+- **Important:** The `--m3_compatible` flag **must be included** to ensure the output format is compatible with CLaMP 3. Without this flag, the extracted MTF files **will not work** correctly in the pipeline.
 
 ##### **1.3 Extract Audio Features using MERT**
 For audio processing, CLaMP 3 uses **MERT-extracted features** instead of raw waveforms. Extract MERT-based features from raw audio (`.mp3`, `.wav`) using [`extract_mert.py`](https://github.com/sanderwood/clamp3/blob/main/preprocessing/audio/extract_mert.py):
@@ -148,48 +239,16 @@ All extracted features are stored as `.npy` files.
 ### **Retrieval and Classification**
 #### **1. Semantic Search**  
 
-To perform semantic search with CLaMP 3, you first need to extract the features for both your **query** and **reference** data using [`extract_clamp3.py`](https://github.com/sanderwood/clamp3/blob/main/code/extract_clamp3.py). The query is usually a text description, and the reference folder contains a large set of music data, such as audio or sheet music.
+CLaMP 3 enables **semantic search** by computing feature similarities between a query and a reference dataset. This search can be performed across different modalities, including **text, music, and images**.  
 
-After extracting the features, you can perform the semantic search using the [`semantic_search.py`](https://github.com/sanderwood/clamp3/blob/main/retrieval/semantic_search.py) script. This search can be used for various tasks.
+To run a semantic search, use the [`clamp3_search.py`](https://github.com/sanderwood/clamp3/blob/main/inference/clamp3_search.py) script:
 
 ```bash
-python semantic_search.py <query_file> <reference_folder> [--top_k TOP_K]
+python clamp3_search.py <query_file> <reference_folder> [--top_k TOP_K]
 ```
-- **`<query_file>`**: Path to the query feature (e.g., `ballad.npy`).
-- **`<reference_folder>`**: Folder containing reference features for comparison.
-- **`--top_k`**: *(Optional)* Number of top similar items to display (default is 10).
-
-CLaMP 3's semantic search enables various retrieval and evaluation tasks by comparing features extracted from queries and reference data. Generally, the larger and more diverse the reference music dataset, the higher the likelihood of retrieving relevant and accurately matched music.
-
-##### **1. Text-to-Music Retrieval**  
-- **Query:** Text description of the desired music.  
-- **Reference:** Music data (e.g., audio files).  
-- **Output:** Retrieves music that best matches the semantic meaning of the text description.
-
-##### **2. Image-to-Music Retrieval**  
-- **Query:** Generate an image caption using models like [BLIP](https://huggingface.co/Salesforce/blip-image-captioning-base).  
-- **Reference:** Music data (e.g., audio files). 
-- **Output:** Finds music that semantically aligns with the image.
-
-##### **3. Cross-Modal and Same-Modal Music Retrieval**  
-- **Cross-Modal Retrieval:**  
-  - **Query:** Music data from one modality (e.g., audio).  
-  - **Reference:** Music data from another modality (e.g., MIDI, ABC notation).  
-  - **Output:** Finds semantically similar music across different representations.
-
-- **Same-Modal Retrieval (Semantic-Based Music Recommendation):**  
-  - **Query & Reference:** Both are from the same modality (e.g., audio-to-audio).  
-  - **Output:** Recommends similar music based on semantic meaning.
-
-##### **4. Zero-Shot Music Classification**  
-- **Query:** Music data.  
-- **Reference:** Class descriptions (e.g., "It is classical," "It is folk").  
-- **Output:** Assigns the most relevant class based on feature similarity.
-
-##### **5. Music Semantic Similarity Evaluation**  
-- **Query:** High-quality music or music generation prompt.  
-- **Reference:** Generated music.  
-- **Output:** Ranks generated music based on semantic similarity to the query. For large-scale evaluation between generated music and reference music, it is recommended to use [`clamp3_score.py`](https://github.com/sanderwood/clamp3/blob/main/retrieval/clamp3_score.py).
+- **`<query_file>`**: Path to the query file (`.txt`, `.png`, `.jpg`, `.mid`, `.mxl`, `.wav`, etc.).  
+- **`<reference_folder>`**: Folder containing reference files (music, images, or text).  
+- **`--top_k`**: *(Optional)* Number of top similar items to display (default is `10`).  
 
 #### **2. Classification**
 Train a linear classifier using **[`train_cls.py`](https://github.com/sanderwood/clamp3/tree/main/classification/train_cls.py)**:  
