@@ -79,7 +79,7 @@ This script uses the pre-trained CLaMP 3 model to extract representations from m
 
 **Usage:**
 ```bash
-accelerate launch extract_clamp3.py --epoch <epoch> <input_dir> <output_dir> [--get_global]
+accelerate launch extract_clamp3.py --epoch <epoch> <input_dir> <output_dir> --get_global
 ```
 - **`--epoch <epoch>`:** (Optional) Specify the checkpoint epoch.  
 - **`<input_dir>`:** Directory containing the input files.  

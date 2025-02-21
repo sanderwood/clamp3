@@ -225,7 +225,7 @@ By default, CLaMP 3 is configured for the **SAAS version** (optimized for audio)
 After training (or using pre-trained weights), extract features using [`extract_clamp3.py`](https://github.com/sanderwood/clamp3/blob/main/code/extract_clamp3.py):
 
 ```bash
-accelerate launch extract_clamp3.py --epoch <epoch> <input_dir> <output_dir> [--get_global]
+accelerate launch extract_clamp3.py --epoch <epoch> <input_dir> <output_dir> --get_global
 ```
 - **`--epoch <epoch>`:** (Optional) Specify the checkpoint epoch.  
 - **`<input_dir>`:** Directory containing the input files.  
