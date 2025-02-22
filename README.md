@@ -11,35 +11,45 @@
   <img src="overview.png" alt="CLaMP 3 Overview" width="50%">
 </p>
 
+---
+
 ## **Overview**
-CLaMP 3 is a multimodal and multilingual framework for music information retrieval (MIR) that supports all major music formats—sheet music, audio, and performance signals—along with multilingual text. It is trained on 27 languages and can generalize to support 100 languages. Using contrastive learning, CLaMP 3 aligns these different formats into a shared representation space, making cross-modal retrieval seamless. Experiments show that it significantly outperforms previous strong baselines, setting a new state-of-the-art in multimodal and multilingual MIR.
+CLaMP 3 is a **state-of-the-art** framework for **music information retrieval (MIR)** across multiple **modalities** (🎼 Sheet Music, 🎵 Audio, 🎹 Performance Signals) and **languages** (🌐 27 trained, 100 supported). It leverages **contrastive learning** to align diverse music formats into a **shared representation space**, enabling seamless cross-modal retrieval. You can think of it as an advanced **CLAP/MuLan** for music.
 
-### **Key Features**  
-- **Multimodal Support:**  
-   - **Sheet Music:** Uses **Interleaved ABC notation**, with a context size of **512 bars**.  
-   - **Performance Signals:** Processes **MIDI Text Format (MTF)** data, with a context size of **512 MIDI messages**.  
-   - **Audio Recordings:** Works with features extracted by **[MERT](https://arxiv.org/abs/2306.00107)**, with a context size of **640 seconds of audio**.
+🚀 **Why CLaMP 3?**  
+✅ **Multimodal**: Works with 🎼 **sheet music**, 🎵 **audio**, 🎹 **MIDI performance**  
+✅ **Multilingual**: Supports **27 trained** & generalizes to **100 languages**  
+✅ **SOTA Performance**: Outperforms previous baselines in **MIR**  
 
-- **Multilingual Capabilities:**  
-   - Trained on **27 languages** and generalizes to all **100 languages** supported by **[XLM-R](https://arxiv.org/abs/1911.02116)**.  
+---
 
-- **Datasets & Benchmarking:**  
-   - **[M4-RAG](https://huggingface.co/datasets/sander-wood/m4-rag):** A web-scale dataset of **2.31M high-quality music-text pairs** across 27 languages and 194 countries.  
-   - **[WikiMT-X](https://huggingface.co/datasets/sander-wood/wikimt-x):** A MIR benchmark containing **1,000 triplets** of sheet music, audio, and diverse text annotations.  
+## ✨ **Key Features**  
 
-### **What Can CLaMP 3 Do?**  
+### 🎶 **Multimodal Support**  
+📜 **Sheet Music**: Interleaved ABC notation (**512 bars**)  
+🎹 **Performance Signals**: MIDI Text Format (**512 MIDI messages**)  
+🎧 **Audio Recordings**: MERT features (**640 sec of audio**)  
 
-CLaMP 3 unifies diverse music data and text into a shared representation space, enabling the following key capabilities:  
+### 🌍 **Multilingual Capabilities**  
+🗣️ Trained on **27 languages**, generalizes to **100+** using [XLM-R](https://arxiv.org/abs/1911.02116)  
 
-- **Text-to-Music Retrieval**: Finds relevant music based on text descriptions in 100 languages.  
-- **Image-to-Music Retrieval**: Matches music that aligns with the scene depicted in the image.  
-- **Cross-Modal Music Retrieval**: Enables music retrieval and recommendation across different modalities.  
-- **Zero-Shot Music Classification**: Identifies musical attributes such as genres, moods, and styles without labeled training data.  
-- **Music Semantic Similarity Evaluation**: Measures semantic similarity between:  
-   - **Generated music and its text prompt**, validating how well text-to-music models follow instructions.  
-   - **Generated music and reference music**, assessing their semantic similarity, including aspects like style, instrumentation, and musicality.  
+### 📊 **Datasets & Benchmarks**  
+📂 **[M4-RAG](https://huggingface.co/datasets/sander-wood/m4-rag)**: **2.31M music-text pairs** 🌎  
+📂 **[WikiMT-X](https://huggingface.co/datasets/sander-wood/wikimt-x)**: **1,000 music triplets**  
 
-For examples demonstrating these capabilities, visit [CLaMP 3 Homepage](https://sanderwood.github.io/clamp3/).
+---
+
+## 🔥 **What Can CLaMP 3 Do?**  
+
+💡 **Text-to-Music Retrieval**: Search music with text (100 languages!)  
+📸 **Image-to-Music Retrieval**: Match music to images 🎨  
+🔄 **Cross-Modal Retrieval**: Find related music across formats  
+🛠️ **Zero-Shot Classification**: Identify genre, mood, & style 🏷️  
+🎼 **Semantic Similarity**: Measure similarity between generated & reference music  
+
+👉 **Try it out**: [CLaMP 3 Homepage](https://sanderwood.github.io/clamp3/)  
+
+---
 
 ## **Quick Start Guide**  
 For users who want to get started quickly without delving into the details, follow these steps:
