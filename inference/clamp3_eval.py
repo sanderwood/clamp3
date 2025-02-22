@@ -3,36 +3,41 @@ import torch
 import numpy as np
 import argparse
 from tqdm import tqdm
+import json
 
 def get_features(path):
     """
-    Load and return feature data from .npy files in the given directory.
+    Load and return feature data and filenames from .npy files in the given directory.
     Each feature is stored in a dictionary with the filename (without extension) as the key.
     """
     features = {}
+    filenames = {}
     
     # Traverse all files in the directory
     for root, dirs, files in os.walk(path):
         for file in files:
             if file.endswith(".npy"):
-                key = file.split(".")[0]
+                key = '/'.join(root.split('/')[1:]) + '/' + file.split(".")[0]
                 file = os.path.join(root, file)
                 feat = np.load(file).squeeze()
                 if key not in features:
                     features[key] = [feat]
+                    filenames[key] = [file]
                 else:
                     features[key].append(feat)
+                    filenames[key].append(file)
     
-    return features
+    return features, filenames
 
-def calculate_metrics(query_features, reference_features):
+def calculate_metrics(query_features, query_filenames, reference_features, reference_filenames):
     """
     Calculate MRR, Hit@1, Hit@10, and Hit@100 metrics based on the similarity 
     between query and reference features.
     """
     common_keys = set(query_features.keys()) & set(reference_features.keys())
-    print(len(common_keys), "common keys found.")
-    mrr, hit_1, hit_10, hit_100, total_similarity, total_query = 0, 0, 0, 0, 0, 0
+    print(len(common_keys), "common keys found between query and reference features.")
+    mrr, hit_1, hit_10, hit_100, total_query = 0, 0, 0, 0, 0
+    rank_json = []
 
     for idx, key in enumerate(tqdm(common_keys)):
         # Get all query features for the current key
@@ -69,20 +74,29 @@ def calculate_metrics(query_features, reference_features):
                     if idx in ranks[:1]:
                         hit_1 += 1
             
-            # Update total similarity
-            total_similarity += similarities[idx].item()
+            # Save the rank position
+            rank_json.append({
+                "query": query_filenames[key][i],
+                "reference": reference_filenames[key],
+                "rank": ranks.index(idx) + 1
+            })
+    
+    # Save the rank list in a JSONL file
+    with open('retrieval_ranks.jsonl', 'w') as f:
+        for item in rank_json:
+            f.write(json.dumps(item) + '\n')
 
-    # Compute the final metrics
+    # Compute the retrieval metrics
+    print(f"Total query features: {total_query}")
+    print(f"Total reference features: {len(reference_features)}")
     print(f"MRR: {round(mrr / total_query, 4)}")
     print(f"Hit@1: {round(hit_1 / total_query, 4)}")
     print(f"Hit@10: {round(hit_10 / total_query, 4)}")
     print(f"Hit@100: {round(hit_100 / total_query, 4)}")
-    print(f"Avg. pair sim: {round(total_similarity / total_query, 4)}")
-    print(f"Total pairs: {total_query}")
 
 if __name__ == '__main__':
     # Set up argument parsing for input directories
-    parser = argparse.ArgumentParser(description="Calculate similarity metrics between query and reference features.")
+    parser = argparse.ArgumentParser(description="Calculate retrieval metrics between query and reference features.")
     parser.add_argument('query_folder', type=str, help='Path to the folder containing query features (.npy files).')
     parser.add_argument('reference_folder', type=str, help='Path to the folder containing reference features (.npy files).')
     args = parser.parse_args()
@@ -91,9 +105,12 @@ if __name__ == '__main__':
     print("Reference folder:", args.reference_folder)
     
     # Load features from the specified folders
-    query_features = get_features(args.query_folder)
-    reference_features = get_features(args.reference_folder)
+    query_features, query_filenames = get_features(args.query_folder)
+    reference_features, reference_filenames = get_features(args.reference_folder)
+
+    # Convert reference features and filenames to single values
     reference_features = {k: v[0] for k, v in reference_features.items()}
+    reference_filenames = {k: v[0] for k, v in reference_filenames.items()}
 
     # Calculate and print the metrics
-    calculate_metrics(query_features, reference_features)
+    calculate_metrics(query_features, query_filenames, reference_features, reference_filenames)

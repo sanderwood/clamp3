@@ -102,7 +102,7 @@ def extract_img_features(img_dir, feat_dir=None):
     # Step 6: Change directory back to the main folder
     change_directory('..')
     
-def extract_abc_features(xml_dir, feat_dir=None):
+def extract_xml_features(xml_dir, feat_dir=None):
     '''Extract XML (sheet music) features from XML files.'''
     # Step 0: Convert to absolute path
     xml_dir = os.path.abspath(xml_dir)
@@ -123,7 +123,7 @@ def extract_abc_features(xml_dir, feat_dir=None):
 
     # Step 5: Run extract_clamp3.py
     if feat_dir is None:
-        run_command(f'python extract_clamp3.py ../temp/int_abc ../inference/abc_features --get_global')
+        run_command(f'python extract_clamp3.py ../temp/int_abc ../inference/xml_features --get_global')
     else:
         feat_dir = os.path.abspath(feat_dir)
         run_command(f'python extract_clamp3.py ../temp/int_abc "{feat_dir}" --get_global')

@@ -39,7 +39,7 @@ def main(query_file, features_folder, top_k=10):
     top_k = min(top_k, len(keys))
     
     # Round to 4 decimal places for similarity scores
-    print(f"Top {top_k} results among {len(keys)} features:")
+    print(f"Top {top_k} results among {len(keys)} candidates:")
     for i in range(top_k):
         print(keys[ranked_indices[i]], round(similarities[ranked_indices[i]].item(), 4))
 

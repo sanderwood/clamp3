@@ -18,6 +18,19 @@ sliding_window_overlap_in_percent = 0.0
 layer = None
 reduction = 'mean'
 
+# Log files
+LOG_DIR = "logs"
+os.makedirs(LOG_DIR, exist_ok=True)
+log_file_path = os.path.join(LOG_DIR, "process_log.txt")
+skip_file_path = os.path.join(LOG_DIR, "skip_log.txt")
+error_file_path = os.path.join(LOG_DIR, "error_log.txt")
+pass_file_path = os.path.join(LOG_DIR, "pass_log.txt")
+
+# Helper function for logging messages
+def log_message(log_file, message):
+    with open(log_file, "a", encoding="utf-8") as log:
+        log.write(message + "\n")
+
 def mert_infr_features(feature_extractor, audio_file, device):
     try:
         waveform = load_audio(
@@ -30,7 +43,8 @@ def mert_infr_features(feature_extractor, audio_file, device):
             device=device,
         )
     except Exception as e:
-        print(f"skip audio {audio_file} because of {e}")
+        log_message(error_file_path, f"Failed to load audio {audio_file}: {e}")
+        return None
     wav = feature_extractor.process_wav(waveform)
     wav = wav.to(device)
     if sliding_window_size_in_sec:
@@ -50,9 +64,7 @@ def mert_infr_features(feature_extractor, audio_file, device):
     return features
 
 def process_directory(input_path, output_path, files, mean_features=False):
-    print(f"Found {len(files)} files in total")
-    with open("log.txt", "a", encoding="utf-8") as f:
-        f.write("Found " + str(len(files)) + " files in total\n")
+    log_message(log_file_path, f"Found {len(files)} files in total")
 
     # calculate the number of files to process per GPU
     num_files_per_gpu = len(files) // accelerator.num_processes
@@ -70,30 +82,25 @@ def process_directory(input_path, output_path, files, mean_features=False):
         try:
             os.makedirs(output_dir, exist_ok=True)
         except Exception as e:
-            print(output_dir + " can not be created\n" + str(e))
-            with open("log.txt", "a") as f:
-                f.write(output_dir + " can not be created\n" + str(e) + "\n")
+            log_message(error_file_path, f"Failed to create directory {output_dir}: {e}")
 
         output_file = os.path.join(output_dir, os.path.splitext(os.path.basename(file))[0] + ".npy")
 
         if os.path.exists(output_file):
-            print(f"Skipping {file}, output already exists")
-            with open("skip.txt", "a", encoding="utf-8") as f:
-                f.write(file + "\n")
+            log_message(skip_file_path, f"Skipping {file}, output already exists")
             continue
 
         try:
             features = mert_infr_features(feature_extractor, file, device)
+            if features is None:
+                continue  # Skip if there was an error in feature extraction
             if mean_features:
                 features = features.mean(dim=0, keepdim=True)
             features = features.cpu().numpy()
             np.save(output_file, features)
-            with open("pass.txt", "a", encoding="utf-8") as f:
-                f.write(file + "\n")
+            log_message(pass_file_path, f"Processed and saved {file}")
         except Exception as e:
-            print(f"Failed to process {file}: {e}")
-            with open("log.txt", "a", encoding="utf-8") as f:
-                f.write("Failed to process " + file + ": " + str(e) + "\n")
+            log_message(error_file_path, f"Failed to process {file}: {e}")
 
 if __name__ == "__main__":
     import argparse
@@ -115,14 +122,12 @@ if __name__ == "__main__":
         for f in fs:
             if f.endswith(("wav", "mp3")):
                 files.append(os.path.join(root, f))
-    print(f"Found {len(files)} files in total")
-    with open("files.json", "w", encoding="utf-8") as f:
-        json.dump(files, f)
+    log_message(log_file_path, f"Found {len(files)} files in total")
 
     # Initialize accelerator and device
     accelerator = Accelerator()
     device = accelerator.device
-    print("Using device:", device)
+    log_message(log_file_path, f"Using device: {device}")
 
     # Initialize feature extractor with model_path from command-line
     feature_extractor = HuBERTFeature(
