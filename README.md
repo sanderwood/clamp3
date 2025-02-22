@@ -28,7 +28,7 @@ CLaMP 3 is a **state-of-the-art** framework for **music information retrieval (M
 ### 🎶 **Multimodal Support**  
 📜 **Sheet Music**: Interleaved ABC notation (**512 bars**)  
 🎹 **Performance Signals**: MIDI Text Format (**512 MIDI messages**)  
-🎧 **Audio Recordings**: MERT features (**640 sec of audio**)  
+🎧 **Audio Recordings**: [MERT](https://arxiv.org/abs/2306.00107) features (**640 sec of audio**)  
 
 ### 🌍 **Multilingual Capabilities**  
 🗣️ Trained on **27 languages**, generalizes to **100+** using [XLM-R](https://arxiv.org/abs/1911.02116)  
