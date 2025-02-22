@@ -26,16 +26,16 @@ CLaMP 3 is a **state-of-the-art** framework for **music information retrieval (M
 ## ✨ **Key Features**  
 
 ### **Multimodal Support**  
-📜 **Sheet Music**: Interleaved ABC notation (**512 bars**)  
-🎹 **Performance Signals**: MIDI Text Format (**512 MIDI messages**)  
-🎧 **Audio Recordings**: [MERT](https://arxiv.org/abs/2306.00107) features (**640 sec of audio**)  
+- **Sheet Music**: Interleaved ABC notation (**512 bars**)  
+- **Performance Signals**: MIDI Text Format (**512 MIDI messages**)  
+- **Audio Recordings**: [MERT](https://arxiv.org/abs/2306.00107) features (**640 sec of audio**)  
 
 ### **Multilingual Capabilities**  
-🗣️ Trained on **27 languages**, generalizes to **100+** using [XLM-R](https://arxiv.org/abs/1911.02116)  
+- Trained on **27 languages**, generalizes to **100+** using [XLM-R](https://arxiv.org/abs/1911.02116)  
 
 ### **Datasets & Benchmarks**  
-📂 **[M4-RAG](https://huggingface.co/datasets/sander-wood/m4-rag)**: **2.31M music-text pairs** 🌎  
-📂 **[WikiMT-X](https://huggingface.co/datasets/sander-wood/wikimt-x)**: **1,000 music triplets**  
+- **[M4-RAG](https://huggingface.co/datasets/sander-wood/m4-rag)**: **2.31M music-text pairs** 🌎  
+- **[WikiMT-X](https://huggingface.co/datasets/sander-wood/wikimt-x)**: **1,000 music triplets**  
 
 ---
 
