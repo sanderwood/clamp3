@@ -4,32 +4,35 @@ from utils import *
 
 def main():
     if len(sys.argv) < 3 or len(sys.argv) > 4:
-        print('Usage: python clamp3_score.py <query_dir> <ref_dir> [--pairwise]')
+        print('Usage: python clamp3_score.py <query_dir_path> <ref_dir_path> [--group]')
         sys.exit(1)
 
-    query_dir = os.path.abspath(sys.argv[1])
-    ref_dir = os.path.abspath(sys.argv[2])
+    query_dir_path = os.path.abspath(sys.argv[1])
+    ref_dir_path = os.path.abspath(sys.argv[2])
 
-    # Check if --pairwise is passed
-    pairwise_flag = '--pairwise' if len(sys.argv) == 4 and sys.argv[3] == '--pairwise' else None
+    query_dir = os.path.basename(query_dir_path)
+    ref_dir = os.path.basename(ref_dir_path)
 
-    # Step 1: Create a temporary directory
+    group_flag = '--group' if len(sys.argv) == 4 and sys.argv[3] == '--group' else None
+
+    # Step 1: Create temporary and cache directories
     os.makedirs('temp', exist_ok=True)
+    os.makedirs('cache', exist_ok=True)
 
     # Step 2: Determine modalities automatically
-    query_modality = get_modality_from_dir(query_dir)
-    ref_modality = get_modality_from_dir(ref_dir)
+    query_modality = get_modality_from_dir(query_dir_path)
+    ref_modality = get_modality_from_dir(ref_dir_path)
 
     if query_modality is None:
-        print(f'Error: Could not determine modality for query_dir "{query_dir}"')
+        print(f'Error: Could not determine query modality for "{query_dir}"')
         sys.exit(1)
 
     if ref_modality is None:
-        print(f'Error: Could not determine modality for ref_dir "{ref_dir}"')
+        print(f'Error: Could not determine reference modality for "{ref_dir}"')
         sys.exit(1)
 
-    print(f'Detected query_modality: {query_modality}')
-    print(f'Detected ref_modality: {ref_modality}')
+    print(f'Detected query modality: {query_modality}')
+    print(f'Detected reference modality: {ref_modality}')
 
     # Step 3: Extract features based on detected modality
     modality_functions = {
@@ -40,24 +43,24 @@ def main():
         'audio': extract_audio_features,
     }
 
-    if os.path.exists(f'inference/{query_modality}_features'):
-        print(f'Warning: {query_modality}_features already exists, skipping extraction.')
+    if os.path.exists(f'cache/{query_modality}-{query_dir}'):
+        print(f'Warning: {query_dir} already exists in the cache, skipping extraction.')
     else:
-        modality_functions[query_modality](query_dir)
+        modality_functions[query_modality](query_dir_path, f'cache/{query_modality}-{query_dir}')
 
-    if os.path.exists(f'inference/{ref_modality}_features'):
-        print(f'Warning: {ref_modality}_features already exists, skipping extraction.')
+    if os.path.exists(f'cache/{ref_modality}-{ref_dir}'):
+        print(f'Warning: {ref_dir} already exists in the cache, skipping extraction.')
     else:
-        modality_functions[ref_modality](ref_dir)
+        modality_functions[ref_modality](ref_dir_path, f'cache/{ref_modality}-{ref_dir}')
     
     # Step 4: Change directory to the inference folder
     change_directory('inference')
 
-    # Step 5: Run the score comparison script with or without --pairwise
-    if pairwise_flag:
-        run_command(f'python clamp3_score.py {query_modality}_features {ref_modality}_features {pairwise_flag}')
+    # Step 5: Run the score comparison script with or without --group
+    if group_flag:
+        run_command(f'python clamp3_score.py ../cache/{query_modality}-{query_dir} ../cache/{ref_modality}-{ref_dir} --group')
     else:
-        run_command(f'python clamp3_score.py {query_modality}_features {ref_modality}_features')
+        run_command(f'python clamp3_score.py ../cache/{query_modality}-{query_dir} ../cache/{ref_modality}-{ref_dir}')
 
     # Step 6: Clean up
     change_directory('..')

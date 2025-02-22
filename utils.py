@@ -61,13 +61,15 @@ def extract_txt_features(txt_dir, feat_dir=None):
     '''Extract text features from XML files.'''
     # Step 0: Convert to absolute path
     txt_dir = os.path.abspath(txt_dir)
-
+    if feat_dir is not None:
+        feat_dir = os.path.abspath(feat_dir)
+    
     # Step 1: Change directory to the code folder
     change_directory('code')
 
     # Step 2: Run extract_clamp3.py
     if feat_dir is None:
-        run_command(f'python extract_clamp3.py "{txt_dir}" ../inference/txt_features --get_global')
+        run_command(f'python extract_clamp3.py "{txt_dir}" ../cache/txt_features --get_global')
     else:
         feat_dir = os.path.abspath(feat_dir)
         run_command(f'python extract_clamp3.py "{txt_dir}" "{feat_dir}" --get_global')
@@ -79,6 +81,8 @@ def extract_img_features(img_dir, feat_dir=None):
     '''Extract image features from XML files.'''
     # Step 0: Convert to absolute path
     img_dir = os.path.abspath(img_dir)
+    if feat_dir is not None:
+        feat_dir = os.path.abspath(feat_dir)
 
     # Step 1: Delete the temp folders
     remove_folder('temp/img_captions')
@@ -94,7 +98,7 @@ def extract_img_features(img_dir, feat_dir=None):
 
     # Step 5: Run extract_clamp3.py
     if feat_dir is None:
-        run_command(f'python extract_clamp3.py ../temp/img_captions ../inference/img_features --get_global')
+        run_command(f'python extract_clamp3.py ../temp/img_captions ../cache/img_features --get_global')
     else:
         feat_dir = os.path.abspath(feat_dir)
         run_command(f'python extract_clamp3.py ../temp/img_captions "{feat_dir}" --get_global')
@@ -106,6 +110,8 @@ def extract_xml_features(xml_dir, feat_dir=None):
     '''Extract XML (sheet music) features from XML files.'''
     # Step 0: Convert to absolute path
     xml_dir = os.path.abspath(xml_dir)
+    if feat_dir is not None:
+        feat_dir = os.path.abspath(feat_dir)
 
     # Step 1: Delete the temp folders
     remove_folder('temp/std_abc')
@@ -123,7 +129,7 @@ def extract_xml_features(xml_dir, feat_dir=None):
 
     # Step 5: Run extract_clamp3.py
     if feat_dir is None:
-        run_command(f'python extract_clamp3.py ../temp/int_abc ../inference/xml_features --get_global')
+        run_command(f'python extract_clamp3.py ../temp/int_abc ../cache/xml_features --get_global')
     else:
         feat_dir = os.path.abspath(feat_dir)
         run_command(f'python extract_clamp3.py ../temp/int_abc "{feat_dir}" --get_global')
@@ -135,6 +141,8 @@ def extract_mid_features(mid_dir, feat_dir=None):
     '''Extract MIDI (performance signal) features from MIDI files.'''
     # Step 0: Convert to absolute path
     mid_dir = os.path.abspath(mid_dir)
+    if feat_dir is not None:
+        feat_dir = os.path.abspath(feat_dir)
 
     # Step 1: Delete temp folder
     remove_folder('temp/mtf')
@@ -150,7 +158,7 @@ def extract_mid_features(mid_dir, feat_dir=None):
 
     # Step 5: Run extract_clamp3.py
     if feat_dir is None:
-        run_command(f'python extract_clamp3.py ../temp/mtf ../inference/mid_features --get_global')
+        run_command(f'python extract_clamp3.py ../temp/mtf ../cache/mid_features --get_global')
     else:
         feat_dir = os.path.abspath(feat_dir)
         run_command(f'python extract_clamp3.py ../temp/mtf "{feat_dir}" --get_global')
@@ -162,6 +170,8 @@ def extract_audio_features(audio_dir, feat_dir=None):
     '''Extract audio features from audio files.'''
     # Step 0: Convert to absolute path
     audio_dir = os.path.abspath(audio_dir)
+    if feat_dir is not None:
+        feat_dir = os.path.abspath(feat_dir)
     
     # Step 1: Delete temp folder
     remove_folder('temp/mert')
@@ -177,7 +187,7 @@ def extract_audio_features(audio_dir, feat_dir=None):
 
     # Step 5: Run extract_clamp3.py
     if feat_dir is None:
-        run_command(f'python extract_clamp3.py ../temp/mert ../inference/audio_features --get_global')
+        run_command(f'python extract_clamp3.py ../temp/mert ../cache/audio_features --get_global')
     else:
         feat_dir = os.path.abspath(feat_dir)
         run_command(f'python extract_clamp3.py ../temp/mert "{feat_dir}" --get_global')

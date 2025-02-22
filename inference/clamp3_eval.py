@@ -13,20 +13,19 @@ def get_features(path):
     features = {}
     filenames = {}
     
-    # Traverse all files in the directory
-    for root, dirs, files in os.walk(path):
+    for root, _, files in os.walk(path):
         for file in files:
             if file.endswith(".npy"):
-                key = '/'.join(root.split('/')[1:]) + '/' + file.split(".")[0]
-                file = os.path.join(root, file)
-                feat = np.load(file).squeeze()
+                key = '/'.join(root.split('/')[3:]) + '/' + file.split(".")[0]
+                file_path = os.path.join(root, file)
+                feat = np.load(file_path).squeeze()
                 if key not in features:
                     features[key] = [feat]
-                    filenames[key] = [file]
+                    filenames[key] = [file_path]
                 else:
                     features[key].append(feat)
-                    filenames[key].append(file)
-    
+                    filenames[key].append(file_path)
+
     return features, filenames
 
 def calculate_metrics(query_features, query_filenames, reference_features, reference_filenames):
@@ -35,7 +34,27 @@ def calculate_metrics(query_features, query_filenames, reference_features, refer
     between query and reference features.
     """
     common_keys = set(query_features.keys()) & set(reference_features.keys())
-    print(len(common_keys), "common keys found between query and reference features.")
+    
+    unmatched_files = []
+    
+    # Collect unmatched files
+    unmatched_queries = set(query_features.keys()) - common_keys
+    unmatched_references = set(reference_features.keys()) - common_keys
+    
+    # Save unmatched query and reference files in a JSONL file
+    for uq in unmatched_queries:
+        unmatched_files.append({"unmatched_query": query_filenames[uq]})
+    for ur in unmatched_references:
+        unmatched_files.append({"unmatched_reference": [reference_filenames[ur]]})
+    
+    if unmatched_files:
+        with open('unmatched_files.jsonl', 'w') as f:
+            for item in unmatched_files:
+                f.write(json.dumps(item) + '\n')
+        raise ValueError(f"There are {len(unmatched_files)} unmatched query or reference files. Check 'inference/unmatched_files.jsonl' for details.")
+    
+    print(f"There are {len(common_keys)} common keys between query and reference features.")
+    
     mrr, hit_1, hit_10, hit_100, total_query = 0, 0, 0, 0, 0
     rank_json = []
 
@@ -93,6 +112,7 @@ def calculate_metrics(query_features, query_filenames, reference_features, refer
     print(f"Hit@1: {round(hit_1 / total_query, 4)}")
     print(f"Hit@10: {round(hit_10 / total_query, 4)}")
     print(f"Hit@100: {round(hit_100 / total_query, 4)}")
+    print("Rank details saved in 'inference/retrieval_ranks.jsonl'.")
 
 if __name__ == '__main__':
     # Set up argument parsing for input directories

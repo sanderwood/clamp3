@@ -8,35 +8,22 @@ The [inference/](https://github.com/sanderwood/clamp3/tree/main/inference) folde
 This script calculates the **semantic similarity** between two datasets by computing cosine similarity between their **feature vectors**.
 
 ```bash
-python clamp3_score.py <query_folder> <reference_folder> [--pairwise]
+python clamp3_score.py <query_folder> <reference_folder> [--group]
 ```
 - **`<query_folder>`**: Folder containing query `.npy` feature files.  
 - **`<reference_folder>`**: Folder containing reference `.npy` feature files.  
-- **`--pairwise`**: *(Optional)* Computes similarity between corresponding files instead of averaging across datasets.  
+- **`--group`**: *(Optional)* Computes similarity between all query and reference features and returns an average similarity score.  
 
 #### **Modes of Operation**  
 
-- **Group Mode (default)**:  
-  Computes similarity between **all query and reference features** and returns an average similarity score.  
-  **Use for large-scale comparisons (fast).**  
-  ```bash
-  python clamp3_score.py query_folder reference_folder
-  ```
-  **Example Output (Group Mode)**:
-  ```
-  Total query features: 1000
-  Total reference features: 1000
-  Group similarity: 0.6711
-  ```
-
-- **Pairwise Mode**:  
+- **Pairwise Mode (default)**:  
   Matches **query and reference files based on identical folder structure and filename prefix** (before the dot) and computes their similarity.  
   **Use for paired datasets.**  
   ```bash
-  python clamp3_score.py query_folder reference_folder --pairwise
+  python clamp3_score.py query_folder reference_folder
   ```
   **Example Output (Pairwise Mode)**:
-  ```
+  ```bash
   Total query features: 1000
   Total reference features: 1000
   Avg. pairwise similarity: 0.1639
@@ -45,6 +32,19 @@ python clamp3_score.py <query_folder> <reference_folder> [--pairwise]
   In **pairwise mode**, results are also saved to a JSON Lines file:  
   ```json
   {"query": "txt_features/UzUybLGvBxE.npy", "reference": "mid_features/UzUybLGvBxE.npy", "similarity": 0.2289600819349289}
+  ```
+
+- **Group Mode**:  
+  Computes similarity between **all query and reference features** and returns an average similarity score.  
+  **Use for large-scale comparisons (fast).**  
+  ```bash
+  python clamp3_score.py query_folder reference_folder --group
+  ```
+  **Example Output (Group Mode)**:
+  ```bash
+  Total query features: 1000
+  Total reference features: 1000
+  Group similarity: 0.6711
   ```
 
 ### **2. [`clamp3_search.py`](https://github.com/sanderwood/clamp3/blob/main/inference/clamp3_search.py) - Running Retrieval Tasks**  
