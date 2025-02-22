@@ -17,7 +17,7 @@
 CLaMP 3 is a **state-of-the-art** framework for **music information retrieval (MIR)** across multiple **modalities** (Text, 🎵 Audio, 🎼 Sheet Music, 🎹 Performance MIDIs) and **languages** (🌐 27 trained, 100 supported). It leverages **contrastive learning** to align diverse music formats into a **shared representation space**, enabling seamless cross-modal retrieval. You can think of it as an advanced **CLAP/MuLan** for music.
 
 🚀 **Why CLaMP 3?**  
-✅ **Multimodal**: Works with Text, 🎼 **sheet music**, 🎵 **audio**, 🎹 **MIDI**  
+✅ **Multimodal**: Works with text, 🎼 **sheet music**, 🎵 **audio**, 🎹 **MIDI**  
 ✅ **Multilingual**: Supports **27 trained** & generalizes to **100 languages**  
 ✅ **SOTA Performance**: Outperforms previous baselines in **MIR**  
 
