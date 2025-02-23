@@ -16,8 +16,8 @@ CLaMP 3 is a **state-of-the-art** framework for **music information retrieval (M
 
 🚀 **Why CLaMP 3?**  
 ✅ **Multimodal**: Works with ✍️ **text**, 🎼 **sheet music**, 🎵 **audio**, 🎹 **MIDI**, and 🖼️ **images**  
-✅ **Multilingual**: Supports **27 trained** & generalizes to **100 languages**  
-✅ **SOTA Performance**: Significantly outperforms previous strong baselines across modalities and languages
+✅ **Multilingual**: Supports **27 trained** & generalizes to 🌐 **100 languages**  
+✅ **SOTA Performance**: Significantly **outperforms previous strong baselines** across modalities and languages 📊
 
 ## ✨ **Key Features**  
 
@@ -67,7 +67,7 @@ Supported formats include:
 - **Performance Signals**: `.mid`, `.midi`
 - **Sheet Music**: `.mxl`, `.musicxml`, `.xml`
 - **Images**: `.png`, `.jpg`
-- **Text**: `.txt` (in 100 language)
+- **Text**: `.txt` (in 100 languages)
 
 #### **Feature Management**  
 - Extracted features are stored in the `cache/` directory and reused in future runs to avoid recomputation.
