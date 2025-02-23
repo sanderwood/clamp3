@@ -121,7 +121,7 @@ python clamp3_score.py <query_dir> <ref_dir> [--group]
 
 #### **[`clamp3_search.py`](https://github.com/sanderwood/clamp3/blob/main/clamp3_search.py) - Semantic Search**  
 
-Run retrieval tasks by comparing a query file to reference files in `ref_dir`. The query and `ref_dir` can be **any modality**, so there are **25 possible retrieval combinations**, e.g., text-to-music, image-to-text, music-to-music, music-to-text (zero-shot music classification), etc.
+Run retrieval tasks by comparing a query file to reference files in `ref_dir`. The query and `ref_dir` can be **any modality**, so there are **25 possible retrieval combinations**, e.g., text-to-music, image-to-music, music-to-music, music-to-text (zero-shot music classification), etc.
 
 ```bash
 python clamp3_search.py <query_file> <ref_dir> [--top_k TOP_K]
