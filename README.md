@@ -12,7 +12,7 @@
 </p>
 
 ## **Overview**
-CLaMP 3 is a **state-of-the-art** framework for **music information retrieval (MIR)** across multiple **modalities** (✍️ **text**, 🎼 **sheet music**, 🎵 **audio**, 🎹 **MIDI**, and 🖼️ **images**) and **languages** (🌐 27 trained, 100 supported). It leverages **contrastive learning** to align diverse music formats into a **shared representation space**, enabling seamless cross-modal retrieval. You can think of it as a more comprehensive version of CLAP or MuLan—with stronger performance, support for all major music modalities, and global language coverage.
+CLaMP 3 is a **state-of-the-art** framework for **music information retrieval (MIR)** across multiple **modalities** (✍️ **text**, 🎼 **sheet music**, 🎵 **audio**, 🎹 **MIDI**, and 🖼️ **images**) and **languages** (🌐 27 trained, 100 supported). It leverages **contrastive learning** to align diverse music modalities into a **shared representation space**, enabling seamless cross-modal retrieval. You can think of it as a more comprehensive version of CLAP or MuLan—with much stronger performance, support for all major music modalities, and global language coverage.
 
 🚀 **Why CLaMP 3?**  
 ✅ **Multimodal**: Works with ✍️ **text**, 🎼 **sheet music**, 🎵 **audio**, 🎹 **MIDI**, and 🖼️ **images**  
@@ -40,9 +40,9 @@ CLaMP 3 is a **state-of-the-art** framework for **music information retrieval (M
 
 💡 **Text-to-Music Retrieval**: Search music with text (100 languages!)  
 📸 **Image-to-Music Retrieval**: Match music to images 🎨  
-🔄 **Cross-Modal Retrieval**: Find related music across formats  
-🛠️ **Zero-Shot Classification**: Identify genre, mood, & style 🏷️  
-🎼 **Semantic Similarity**: Measure similarity between generated & reference music  
+🔄 **Cross-Modal Retrieval**: Find related music across different modalities  
+🛠️ **Zero-Shot Classification**: Identify genre, mood, style, & more 🏷️  
+🎼 **Semantic Similarity**: Measure semantic similarity between generated & reference music  
 
 👉 **Check it out**: [CLaMP 3 Homepage](https://sanderwood.github.io/clamp3/)  
 
