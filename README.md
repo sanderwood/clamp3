@@ -60,7 +60,7 @@ pip install -r requirements.txt
 ```
 
 ### **Overview of `clamp3_*.py` Scripts**  
-CLaMP 3 provides scripts for **semantic similarity calculation**, **semantic search**, and **retrieval performance evaluation** across five modalities. Simply provide the file path, and the script will automatically detect the modality and extract the relevant features.
+CLaMP 3 provides scripts for **semantic search**, **semantic similarity calculation**, **retrieval performance evaluation**, and **feature extraction** across five modalities. Simply provide the file path, and the script will automatically detect the modality and extract the relevant features.
 
 Supported formats include:
 - **Audio**: `.mp3`, `.wav`
@@ -74,6 +74,14 @@ Supported formats include:
 - Temporary files are saved in `temp/` and cleaned up after each run.
 
 > **Note**: All files in a folder must belong to the same modality for processing.
+
+#### **[`clamp3_search.py`](https://github.com/sanderwood/clamp3/blob/main/clamp3_search.py) - Semantic Search**  
+
+Run retrieval tasks by comparing a query file to reference files in `ref_dir`. The query and `ref_dir` can be **any modality**, so there are **25 possible retrieval combinations**, e.g., text-to-music, image-to-music, music-to-music, music-to-text (zero-shot music classification), etc.
+
+```bash
+python clamp3_search.py <query_file> <ref_dir> [--top_k TOP_K]
+```
 
 #### **[`clamp3_score.py`](https://github.com/sanderwood/clamp3/blob/main/clamp3_score.py) - Semantic Similarity Calculation**
 
@@ -119,14 +127,6 @@ python clamp3_score.py <query_dir> <ref_dir> [--group]
   python clamp3_score.py query_dir ref_dir --group
   ```
 
-#### **[`clamp3_search.py`](https://github.com/sanderwood/clamp3/blob/main/clamp3_search.py) - Semantic Search**  
-
-Run retrieval tasks by comparing a query file to reference files in `ref_dir`. The query and `ref_dir` can be **any modality**, so there are **25 possible retrieval combinations**, e.g., text-to-music, image-to-music, music-to-music, music-to-text (zero-shot music classification), etc.
-
-```bash
-python clamp3_search.py <query_file> <ref_dir> [--top_k TOP_K]
-```
-
 #### **[`clamp3_eval.py`](https://github.com/sanderwood/clamp3/blob/main/clamp3_eval.py) - Retrieval Performance Evaluation**  
 
 Evaluates **CLaMP3's retrieval performance** on a paired dataset using metrics like **MRR** and **Hit@K**. Works the same way as **pairwise mode** in `clamp3_score.py`—requiring **matching folder structure** and **filenames** between `query_dir` and `ref_dir`.
@@ -134,6 +134,18 @@ Evaluates **CLaMP3's retrieval performance** on a paired dataset using metrics l
 ```bash
 python clamp3_eval.py <query_dir> <ref_dir>
 ```
+
+#### **[`clamp3_embd.py`](https://github.com/sanderwood/clamp3/blob/main/clamp3_embd.py) - Feature Extraction**  
+
+If other scripts don't meet your needs, use `clamp3_embd.py` to extract features.
+
+```bash
+python clamp3_embd.py <input_dir_path> <output_dir_path> [--get_global]
+```
+
+**Feature Output:**
+  - **Without `--get_global`** → Shape: **(1, T, 768)** (T = time steps). Uses last hidden states before avg pooling, ideal for applications needing temporal info. Fine-tuning recommended.
+  - **With `--get_global`** → Shape: **(1, 768)**. Uses avg pooled features, suitable for applications needing global info, can be used directly.
 
 ## **Repository Structure**
 - **[code/](https://github.com/sanderwood/clamp3/tree/main/code)** → Training & feature extraction scripts.

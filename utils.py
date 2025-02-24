@@ -57,8 +57,10 @@ def remove_folder(folder):
             print(f'Failed to delete "{folder}": {e}')
             sys.exit(1)
 
-def extract_txt_features(txt_dir, feat_dir=None):
-    '''Extract text features from XML files.'''
+def extract_txt_features(txt_dir, feat_dir=None, global_flag=True):
+    '''Extract text features from text files.'''
+    global_flag = ' --get_global' if global_flag else ''
+
     # Step 0: Convert to absolute path
     txt_dir = os.path.abspath(txt_dir)
     if feat_dir is not None:
@@ -69,16 +71,18 @@ def extract_txt_features(txt_dir, feat_dir=None):
 
     # Step 2: Run extract_clamp3.py
     if feat_dir is None:
-        run_command(f'python extract_clamp3.py "{txt_dir}" ../cache/txt_features --get_global')
+        run_command(f'python extract_clamp3.py "{txt_dir}" ../cache/txt_features{global_flag}')
     else:
         feat_dir = os.path.abspath(feat_dir)
-        run_command(f'python extract_clamp3.py "{txt_dir}" "{feat_dir}" --get_global')
+        run_command(f'python extract_clamp3.py "{txt_dir}" "{feat_dir}"{global_flag}')
     
     # Step 3: Change directory back to the main folder
     change_directory('..')
     
-def extract_img_features(img_dir, feat_dir=None):
-    '''Extract image features from XML files.'''
+def extract_img_features(img_dir, feat_dir=None, global_flag=True):
+    '''Extract image features from image files.'''
+    global_flag = ' --get_global' if global_flag else ''
+
     # Step 0: Convert to absolute path
     img_dir = os.path.abspath(img_dir)
     if feat_dir is not None:
@@ -98,16 +102,18 @@ def extract_img_features(img_dir, feat_dir=None):
 
     # Step 5: Run extract_clamp3.py
     if feat_dir is None:
-        run_command(f'python extract_clamp3.py ../temp/img_captions ../cache/img_features --get_global')
+        run_command(f'python extract_clamp3.py ../temp/img_captions ../cache/img_features{global_flag}')
     else:
         feat_dir = os.path.abspath(feat_dir)
-        run_command(f'python extract_clamp3.py ../temp/img_captions "{feat_dir}" --get_global')
+        run_command(f'python extract_clamp3.py ../temp/img_captions "{feat_dir}"{global_flag}')
     
     # Step 6: Change directory back to the main folder
     change_directory('..')
     
-def extract_xml_features(xml_dir, feat_dir=None):
-    '''Extract XML (sheet music) features from XML files.'''
+def extract_xml_features(xml_dir, feat_dir=None, global_flag=True):
+    '''Extract sheet music features from XML files.'''
+    global_flag = ' --get_global' if global_flag else ''
+
     # Step 0: Convert to absolute path
     xml_dir = os.path.abspath(xml_dir)
     if feat_dir is not None:
@@ -129,16 +135,18 @@ def extract_xml_features(xml_dir, feat_dir=None):
 
     # Step 5: Run extract_clamp3.py
     if feat_dir is None:
-        run_command(f'python extract_clamp3.py ../temp/int_abc ../cache/xml_features --get_global')
+        run_command(f'python extract_clamp3.py ../temp/int_abc ../cache/xml_features{global_flag}')
     else:
         feat_dir = os.path.abspath(feat_dir)
-        run_command(f'python extract_clamp3.py ../temp/int_abc "{feat_dir}" --get_global')
+        run_command(f'python extract_clamp3.py ../temp/int_abc "{feat_dir}"{global_flag}')
     
     # Step 6: Change directory back to the main folder
     change_directory('..')
     
-def extract_mid_features(mid_dir, feat_dir=None):
-    '''Extract MIDI (performance signal) features from MIDI files.'''
+def extract_mid_features(mid_dir, feat_dir=None, global_flag=True):
+    '''Extract performance signal features from MIDI files.'''
+    global_flag = ' --get_global' if global_flag else ''
+
     # Step 0: Convert to absolute path
     mid_dir = os.path.abspath(mid_dir)
     if feat_dir is not None:
@@ -158,16 +166,18 @@ def extract_mid_features(mid_dir, feat_dir=None):
 
     # Step 5: Run extract_clamp3.py
     if feat_dir is None:
-        run_command(f'python extract_clamp3.py ../temp/mtf ../cache/mid_features --get_global')
+        run_command(f'python extract_clamp3.py ../temp/mtf ../cache/mid_features{global_flag}')
     else:
         feat_dir = os.path.abspath(feat_dir)
-        run_command(f'python extract_clamp3.py ../temp/mtf "{feat_dir}" --get_global')
+        run_command(f'python extract_clamp3.py ../temp/mtf "{feat_dir}"{global_flag}')
 
     # Step 6: Change directory back to the main folder
     change_directory('..')
     
-def extract_audio_features(audio_dir, feat_dir=None):
+def extract_audio_features(audio_dir, feat_dir=None, global_flag=True):
     '''Extract audio features from audio files.'''
+    global_flag = ' --get_global' if global_flag else ''
+
     # Step 0: Convert to absolute path
     audio_dir = os.path.abspath(audio_dir)
     if feat_dir is not None:
@@ -187,10 +197,10 @@ def extract_audio_features(audio_dir, feat_dir=None):
 
     # Step 5: Run extract_clamp3.py
     if feat_dir is None:
-        run_command(f'python extract_clamp3.py ../temp/mert ../cache/audio_features --get_global')
+        run_command(f'python extract_clamp3.py ../temp/mert ../cache/audio_features{global_flag}')
     else:
         feat_dir = os.path.abspath(feat_dir)
-        run_command(f'python extract_clamp3.py ../temp/mert "{feat_dir}" --get_global')
+        run_command(f'python extract_clamp3.py ../temp/mert "{feat_dir}"{global_flag}')
 
     # Step 6: Change directory back to the main folder
     change_directory('..')

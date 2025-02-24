@@ -5,7 +5,7 @@ from utils import *
 
 def main():
     if len(sys.argv) < 3 or len(sys.argv) > 5:
-        print('Usage: python semantic_search.py <query_file> <ref_dir> [--top_k TOP_K]')
+        print('Usage: python clamp3_search.py <query_file> <ref_dir> [--top_k TOP_K]')
         sys.exit(1)
 
     query_file_path = os.path.abspath(sys.argv[1])
@@ -23,7 +23,7 @@ def main():
             print("Error: --top_k should be an integer.")
             sys.exit(1)
 
-    # Step 1: Create a temporary and cache directory
+    # Step 1: Create temporary and cache directories
     os.makedirs('temp/query', exist_ok=True)
     os.makedirs('cache/query', exist_ok=True)
 

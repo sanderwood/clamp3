@@ -13,7 +13,7 @@ def main():
     query_dir = os.path.basename(query_dir_path)
     ref_dir = os.path.basename(ref_dir_path)
 
-    # Step 1: Create a temporary and cache directories
+    # Step 1: Create temporary and cache directories
     os.makedirs('temp', exist_ok=True)
     os.makedirs('cache', exist_ok=True)
 
