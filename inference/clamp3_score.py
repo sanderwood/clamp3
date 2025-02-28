@@ -51,7 +51,10 @@ def calculate_pairwise_similarity(query_features, query_filenames, reference_fea
         with open('unmatched_files.jsonl', 'w') as f:
             for item in unmatched_files:
                 f.write(json.dumps(item) + '\n')
-        raise ValueError(f"There are {len(unmatched_files)} unmatched query or reference files. Check 'inference/unmatched_files.jsonl' for details.")
+        print(f"There are {len(unmatched_files)} unmatched query or reference files. Check 'inference/unmatched_files.jsonl' for details.")
+        option = input("Do you want to continue with the matched files? (y/n): ")
+        if option.lower() != 'y':
+            raise ValueError("Exiting due to unmatched query or reference files.")
     
     print(f"There are {len(common_keys)} common keys between query and reference features.")
     
