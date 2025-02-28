@@ -29,7 +29,7 @@ python clamp3_score.py <query_folder> <reference_folder> [--group]
   Avg. pairwise similarity: 0.1639
   ```
 
-  In **pairwise mode**, results are also saved to a JSON Lines file:  
+  In **pairwise mode**, results are also saved to a JSON Lines file (`inference/pairwise_similarities.jsonl`) for each pair:  
   ```json
   {"query": "txt_features/UzUybLGvBxE.npy", "reference": "mid_features/UzUybLGvBxE.npy", "similarity": 0.2289600819349289}
   ```
