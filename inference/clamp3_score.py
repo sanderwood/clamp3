@@ -83,6 +83,9 @@ def calculate_pairwise_similarity(query_features, query_filenames, reference_fea
                 "similarity": similarity.item()
             })
     
+    # Sort the pairwise similarity scores by similarity value
+    pairwise_json = sorted(pairwise_json, key=lambda x: x['similarity'], reverse=True)
+    
     # Save the pairwise similarity scores in a JSONL file
     with open('pairwise_similarities.jsonl', 'w') as f:
         for item in pairwise_json:

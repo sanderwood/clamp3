@@ -73,6 +73,7 @@ Supported formats include:
 - Extracted features are stored in the `cache/` directory and reused in future runs to avoid recomputation.
 - Temporary files are saved in `temp/` and cleaned up after each run.
 
+
 > **Note**: All files in a folder must belong to the same modality for processing.
 
 #### **[`clamp3_search.py`](https://github.com/sanderwood/clamp3/blob/main/clamp3_search.py) - Semantic Search**  
@@ -113,11 +114,9 @@ python clamp3_score.py <query_dir> <ref_dir> [--group]
   ```
 
   - Files with the **same prefix** (before the first dot) are treated as pairs (e.g., `query_dir/en/sample1.wav` and `ref_dir/en/sample1.txt`).
-  - Multiple query files (e.g., `query_dir/zh/sample1.1.wav`, `query_dir/zh/sample1.2.wav`) can correspond to one reference file (e.g., `ref_dir/zh/sample1.txt`).
+  - Multiple query files (e.g., `query_dir/zh/sample1.1.wav`, `query_dir/zh/sample1.2.wav`) can correspond to one reference file (e.g., `ref_dir/zh/sample1.txt`).  
 
-  **Important**:  
-  - **Pairwise mode** can be **slow** for large datasets.  
-  - If you have a large dataset, **switch to group mode** for faster computation.
+  > **Note**: All pairwise similarity scores will be saved in `inference/pairwise_similarities.jsonl`.  
 
 - **Group Mode**:  
   Compares **all query files** to **all reference files** and calculates the average similarity.
@@ -134,6 +133,8 @@ Evaluates **CLaMP3's retrieval performance** on a paired dataset using metrics l
 ```bash
 python clamp3_eval.py <query_dir> <ref_dir>
 ```
+
+> **Note**: All retrieval results (rankings) for each query will be saved in `inference/retrieval_ranks.jsonl`.
 
 #### **[`clamp3_embd.py`](https://github.com/sanderwood/clamp3/blob/main/clamp3_embd.py) - Feature Extraction**  
 

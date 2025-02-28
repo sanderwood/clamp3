@@ -100,6 +100,9 @@ def calculate_metrics(query_features, query_filenames, reference_features, refer
                 "rank": ranks.index(idx) + 1
             })
     
+    # Sort the rank list by rank position
+    rank_json = sorted(rank_json, key=lambda x: x['rank'])
+    
     # Save the rank list in a JSONL file
     with open('retrieval_ranks.jsonl', 'w') as f:
         for item in rank_json:
