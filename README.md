@@ -69,6 +69,8 @@ Supported formats include:
 - **Images**: `.png`, `.jpg`
 - **Text**: `.txt` (in 100 languages)
 
+For details, see **[inference/](https://github.com/sanderwood/clamp3/tree/main/inference)**.
+
 #### **Feature Management**  
 - Extracted features are stored in the `cache/` directory and reused in future runs to avoid recomputation.
 - Temporary files are saved in `temp/` and cleaned up after each run.
