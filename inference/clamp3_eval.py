@@ -12,11 +12,12 @@ def get_features(path):
     """
     features = {}
     filenames = {}
+    prefix_num = len(path.split('/'))
     
     for root, _, files in os.walk(path):
         for file in files:
             if file.endswith(".npy"):
-                key = '/'.join(root.split('/')[3:]) + '/' + file.split(".")[0]
+                key = '/'.join(root.split('/')[prefix_num:]) + '/' + file.split('.')[0]
                 file_path = os.path.join(root, file)
                 feat = np.load(file_path).squeeze()
                 if key not in features:
